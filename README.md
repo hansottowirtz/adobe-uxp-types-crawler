@@ -18,6 +18,14 @@ npm i
 npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path tmp/out --cache-path tmp/cache
 ```
 
+## Publishing
+
+```bash
+npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path publish --cache-path tmp/cache
+cd publish
+npm publish
+```
+
 ## Credits
 
 This project started from [AdobeXD/typings](https://github.com/AdobeXD/typings/issues/28), which did not include types for Photoshop.

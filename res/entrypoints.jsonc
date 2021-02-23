@@ -148,7 +148,10 @@
     {
       "path": ["photoshop", "BatchPlayCommandOptions", "historyStateInfo"],
       "config": {
-        "returnType": "{ name: string, target: any }"
+        "returnType": {
+          "kind": "type-parameter",
+          "name": "HistoryStateInfo"
+        }
       }
     }
   ]

@@ -136,6 +136,16 @@ declare module "photoshop" {
   /**
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
+   * From https://www.adobe.io/photoshop/uxp/ps_reference/interfaces/batchplaycommandoptions/
+   */
+  interface HistoryStateInfo {
+    name: string;
+    target: any;
+  }
+
+  /**
+   * Incomplete definition.
+   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
    * From https://www.adobe.io/photoshop/uxp/ps_reference/media/advanced/cpp-pluginsdk/
    */
   interface PhotoshopMessaging {

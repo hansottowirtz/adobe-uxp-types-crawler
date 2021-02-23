@@ -4,6 +4,11 @@ import * as dts from "dts-dom";
 import { DeclarationFlags, Parameter, ParameterFlags } from "dts-dom";
 import deepEqual from "fast-deep-equal";
 
+// const t: dts.Type = {
+//   kind: "type-parameter",
+//   name: 'abc'
+// }
+
 interface InterfaceConfig {
   urlType?: UrlType;
   // requireStr?: string;
@@ -24,7 +29,7 @@ export interface Entrypoints {
     config: {
       extendsInterfaces: string[];
       prependTemplate: string;
-      returnType: string;
+      returnType: dts.Type;
     };
   }[];
   globals: string[];
@@ -43,6 +48,7 @@ interface Def {
   raw: string;
   comments: string[];
   examples: string[];
+  paramsTypes: Record<string, { name: string; type: string }[]>;
 }
 
 interface AttrList {
@@ -62,6 +68,8 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
   });
 
   const page = await browser.newPage();
+
+  page.on('console', (e) => console.log('[Puppeteer]', e.text()));
 
   /** Maps urls to its type */
   const urlTypesMap = new Map<string, UrlType>();
@@ -166,8 +174,18 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
       const interfaceExamples: string[] = [];
 
       let part: keyof AttrList | "index" | "start" = "start";
+      let subPart: "main" | "parameters" = "main";
+      let subPartCurrParameterName: string = null;
       let currAttr: Attr = null;
       let currDefinition: Def = null;
+
+      function resetCursors() {
+        currAttr = null;
+        currDefinition = null;
+        subPart = "main";
+        subPartCurrParameterName = null;
+      }
+
       const attrs: AttrList = {
         accessors: [],
         methods: [],
@@ -194,23 +212,51 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
           interfaceComments.push(child.textContent);
         }
 
-        if (part === "start") continue;
+        if (part === "start") continue; // below only for attrs
 
         if (child.matches("hr")) {
-          currAttr = null;
-          currDefinition = null;
+          resetCursors();
           continue;
         }
+
         if (child.matches(".spectrum-Heading--S")) {
           const name = child.textContent.replace("#", ""); // not really used
+          resetCursors();
           currAttr = {
             name,
             definitions: [],
           };
           attrs[part as keyof AttrList].push(currAttr);
         }
-        if (!currAttr) continue;
-        // debugger;
+
+        if (!currAttr) continue; // below only if attr defined
+
+        if (child.matches("p.spectrum-Body--M") && child.textContent.trim() === "Parameters:") {
+          subPart = "parameters";
+          continue;
+        }
+        if (subPart === "parameters" && child.matches("p.spectrum-Body--M")) {
+          const raw = child.textContent;
+          subPartCurrParameterName = raw
+            .split(":")[0]
+            .trim()
+            .replace(/^▪/, "")
+            .trim()
+            .replace(/^Optional/, "")
+            .trim();
+        }
+        if (subPartCurrParameterName && child.matches("table")) {
+          const trTags = Array.from(
+            child.querySelectorAll("tbody tr")
+          );
+          currDefinition.paramsTypes[subPartCurrParameterName] = trTags.map((trTag) => ({
+            name: trTag.children[0].textContent.replace("?", ""),
+            type: trTag.children[1].textContent,
+          }));
+        }
+
+        if (subPart === "parameters") continue; // below only "main" is possible
+
         if (child.matches("p.spectrum-Body--M") && child.textContent.match(/^(•|▸|\+) /)) {
           const raw = child.textContent
             .replace(/^(•|▸|\+) /, "")
@@ -220,10 +266,11 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
             raw: raw.replace(/^Optional /, ""),
             comments: [],
             examples: [],
+            paramsTypes: {},
           };
           currAttr.definitions.push(currDefinition);
         } else if (child.matches("p.spectrum-Body--M")) {
-          if (["async", "Parameters:"].includes(child.textContent.trim())) continue;
+          if (["async"].includes(child.textContent.trim())) continue;
           currDefinition.comments.push(child.textContent);
         } else if (child.matches("pre")) {
           currDefinition.examples.push(preTagToExampleJsdocStr(child));
@@ -265,13 +312,19 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
 
       // raw can be getter or setter, optional or normal
       const attrName = def0.raw.replace(/^(get|set) /, "").split(/(\(|\?|\:)/)[0];
-      const returnType = def0.raw.split(":").reverse()[0].trim();
+
+      const attrOverrides = entrypoints.generatorConfig.find(({ path }) =>
+        deepEqual(path, [moduleName, interfaceName, attrName])
+      );
+
+      const rawReturnType = def0.raw.split(":").reverse()[0].trim();
+      const returnType = attrOverrides?.config?.returnType || (objectToAny(rawReturnType) as any);
 
       let flags = DeclarationFlags.None;
       if (isReadonly) flags = flags | DeclarationFlags.ReadOnly;
       if (def0.raw.includes("?")) flags = flags | DeclarationFlags.Optional;
 
-      const dAttr = dts.create.property(attrName, objectToAny(returnType) as any, flags);
+      const dAttr = dts.create.property(attrName, returnType, flags);
       dAttr.jsDocComment = generateJsdoc(def0);
       dInterface.members.push(dAttr);
     }
@@ -282,7 +335,13 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
       let flags = DeclarationFlags.None;
 
       const attrName = def0.raw.split(/(\(|\?)/)[0];
-      const returnType = def0.raw.split(":").reverse()[0].trim();
+
+      const attrOverrides = entrypoints.generatorConfig.find(({ path }) =>
+        deepEqual(path, [moduleName, interfaceName, attrName])
+      );
+
+      const rawReturnType = def0.raw.split(":").reverse()[0].trim();
+      const returnType = attrOverrides?.config?.returnType || (objectToAny(rawReturnType) as any);
 
       // We need to parse the raw definition in order to add it to dts-dom
       let rawParamsList = def0.raw.split(/(\(|\))/)[2].split(",");
@@ -291,7 +350,16 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
       const dParams: Parameter[] = rawParamsList.map((rawParam) => {
         const splitParam = rawParam.split(/\??\:/);
         const paramName = splitParam[0].trim();
-        const paramType = splitParam[1].trim() as any;
+        let paramType: dts.Type = splitParam[1].trim() as any;
+
+        if (def0.paramsTypes[paramName]) {
+          const t: dts.Type = {
+            kind: 'object',
+            members: def0.paramsTypes[paramName].map((v) => ({ kind: "property", name: v.name, type: v.type as any}))
+          }
+          paramType = t;
+        }
+
         const dParam: Parameter = {
           name: paramName,
           type: objectToAny(paramType) as any,
@@ -301,7 +369,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
         return dParam;
       });
 
-      const dAttr = dts.create.method(attrName, dParams, objectToAny(returnType) as any, flags);
+      const dAttr = dts.create.method(attrName, dParams, returnType, flags);
       dAttr.jsDocComment = generateJsdoc(def0);
       dInterface.members.push(dAttr);
     }
@@ -317,6 +385,8 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
 
   console.log("Parsed all interface urls.");
 
+  await browser.close();
+
   return dModuleMap;
 };
 
@@ -326,6 +396,6 @@ const generateJsdoc = (def: Pick<Def, "comments" | "examples">) => {
   return [...def.comments, ...def.examples.map((x) => `@example ${x}`)].join("\n");
 };
 
-const objectToAny = (t: string) => {
+const objectToAny = (t: string | dts.Type) => {
   return t === "object" ? "any" : t;
 };

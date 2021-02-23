@@ -1,0 +1,155 @@
+{
+  "base": "https://www.adobe.io",
+  "entrypoints": [
+    {
+      "type": "index",
+      "url": "/photoshop/uxp/ps_reference/classes",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/interfaces/batchplaycommandoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/interfaces/builtinwarp",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/interfaces/customwarp4x4",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/interfaces/notificationevent",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/interfaces/pixelpoint",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/interfaces/rectangle",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/interfaces/scheduling",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/interfaces/transformable",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/interfaces/warp",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/modules/photoshopaction",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/ps_reference/modules/photoshopcore",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    }
+    // "/photoshop/uxp/uxp/reference-js/Modules"
+  ],
+  "globals": [
+    // "/photoshop/uxp/uxp/reference-js/Global%20Members"
+  ],
+  "urlInterfaceConfig": {
+    "/photoshop/uxp/ps_reference/classes/photoshop": {
+      "interfaceName": "App"
+    },
+    "/photoshop/uxp/ps_reference/classes/grouplayer": {
+      "interfaceName": "GroupLayer"
+    },
+    "/photoshop/uxp/ps_reference/classes/actionset": {
+      "interfaceName": "ActionSet"
+    },
+    "/photoshop/uxp/ps_reference/modules/photoshopaction": {
+      "interfaceName": "PhotoshopAction"
+    },
+    "/photoshop/uxp/ps_reference/modules/photoshopcore": {
+      "interfaceName": "PhotoshopCore"
+    }
+    // "/photoshop/uxp/uxp/reference-js/Modules/os/OS": {
+    //   "urlType": "module",
+    //   "nativeNodeModule": "os"
+    // },
+    // "/photoshop/uxp/uxp/reference-js/Modules/shell/Shell/": {
+    //   "requireStr": "require('uxp').shell"
+    // }
+  },
+  "generatorConfig": [
+    {
+      "path": ["photoshop"],
+      "config": {
+        "prependTemplate": "photoshop.d.ts"
+      }
+    },
+    {
+      "path": ["photoshop", "GroupLayer"],
+      "config": {
+        "extendsInterfaces": ["Layer"]
+      }
+    },
+    {
+      "path": ["photoshop", "BuiltinWarp"],
+      "config": {
+        "extendsInterfaces": ["Warp"]
+      }
+    },
+    {
+      "path": ["photoshop", "CustomWarp4X4"],
+      "config": {
+        "extendsInterfaces": ["Warp"]
+      }
+    },
+    {
+      "path": ["photoshop", "Selection"],
+      "config": {
+        "extendsInterfaces": ["Transformable"]
+      }
+    },
+    {
+      "path": ["photoshop", "BatchPlayCommandOptions", "historyStateInfo"],
+      "config": {
+        "returnType": "{ name: string, target: any }"
+      }
+    }
+  ]
+}

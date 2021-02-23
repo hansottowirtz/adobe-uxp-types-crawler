@@ -1,0 +1,10 @@
+.DS_Store
+.env*
+
+node_modules/
+build/
+pdfs/
+tmp/
+dist/
+
+.serverless/

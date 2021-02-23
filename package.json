@@ -1,0 +1,18 @@
+{
+  "name": "adobe-uxp-types-crawler",
+  "version": "0.0.0",
+  "dependencies": {
+    "commander": "^7.1.0",
+    "dts-dom": "^3.6.0",
+    "fast-deep-equal": "^3.1.3",
+    "puppeteer": "^7.1.0",
+    "strip-json-comments": "^3.1.1"
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

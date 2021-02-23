@@ -1,7 +1,8 @@
 {
   "name": "adobe-uxp-types-crawled-photoshop",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "types": "./photoshop.d.ts",
-  "files": ["photoshop.d.ts"]
+  "files": [
+    "photoshop.d.ts"
+  ]
 }
-

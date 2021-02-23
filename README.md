@@ -1,15 +1,34 @@
 # Adobe UXP Types Crawler
 
-## Intro
+## Usage
 
-_Currently includes types for Photoshop_
+```bash
+npm i -D adobe-uxp-types-photoshop
+```
 
-This project is a quickly hacked together Typescript .d.ts generator for Adobe UXP (for Photoshop).
-It uses Puppeteer to crawl https://www.adobe.io/photoshop/uxp/ps_reference/ and subpages.
-
-See `res/entrypoints.jsonc` for configuration and overrides of the crawler.
+```jsonc
+// tsconfig.json
+{
+  "compilerOptions": {
+    "typeRoots": ["node_modules/@types", "node_modules/adobe-uxp-types-photoshop"],
+    "types": ["adobe-uxp-types-photoshop", /* other types */] // this field is optional
+  }
+}
+```
 
 **Best used together with**: [AdobeXD/typings](https://github.com/AdobeXD/typings/blob/master/types/uxp.d.ts)
+
+**Warning**: These typings are not thoroughly tested and will contain a lot of bugs! Please open an [issue](https://github.com/hansottowirtz/adobe-uxp-types-crawler/issues) if you find any inconsistencies.
+
+## Intro
+
+_Currently only includes types for Photoshop_
+
+This project is a quickly hacked together Typescript .d.ts generator for Adobe UXP (for Photoshop).
+It uses Puppeteer to crawl https://www.adobe.io/photoshop/uxp/ps_reference/ and subpages, and `dts-dom` to
+stitch together the typings files.
+
+See `res/entrypoints.jsonc` for configuration and overrides of the crawler.
 
 ## Running
 

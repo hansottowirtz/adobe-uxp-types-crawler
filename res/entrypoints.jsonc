@@ -4,6 +4,7 @@
     {
       "type": "index",
       "url": "/photoshop/uxp/ps_reference/classes",
+      // This object extends `urlInterfaceConfig` for all interfaces in this index
       "interfaceConfig": {
         "partOfModule": "photoshop"
       }
@@ -90,6 +91,7 @@
   "globals": [
     // "/photoshop/uxp/uxp/reference-js/Global%20Members"
   ],
+  // The interface names are not visible on the Adobe documentation, so we override them here
   "urlInterfaceConfig": {
     "/photoshop/uxp/ps_reference/classes/photoshop": {
       "interfaceName": "App"
@@ -114,6 +116,8 @@
     //   "requireStr": "require('uxp').shell"
     // }
   },
+  // These are overrides for things the generator couldn't figure out by itself
+  // or mistakes in the Adobe documentation
   "generatorConfig": [
     {
       "path": ["photoshop"],

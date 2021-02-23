@@ -6,5 +6,7 @@ build/
 pdfs/
 tmp/
 dist/
+packages/*/*.d.ts
+*.tgz
 
 .serverless/

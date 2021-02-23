@@ -2,6 +2,8 @@
 
 ## Intro
 
+_Currently includes types for Photoshop_
+
 This project is a quickly hacked together Typescript .d.ts generator for Adobe UXP (for Photoshop).
 It uses Puppeteer to crawl https://www.adobe.io/photoshop/uxp/ps_reference/ and subpages.
 
@@ -18,7 +20,14 @@ npm i
 npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path tmp/out --cache-path tmp/cache
 ```
 
+## Publishing
+
+```bash
+npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path packages/photoshop --cache-path tmp/cache
+npx lerna publish from-package
+```
+
 ## Credits
 
 This project started from [AdobeXD/typings](https://github.com/AdobeXD/typings/issues/28), which did not include types for Photoshop.
-Missing enums were taken from [bbb999/Types-For-Adobe](https://github.com/bbb999/Types-for-Adobe/blob/master/Photoshop/2015.5/index.d.ts). Thanks, bbb999!
+Missing enums were taken from [bbb999/Types-For-Adobe](https://github.com/bbb999/Types-for-Adobe/blob/master/Photoshop/2015.5/index.d.ts).

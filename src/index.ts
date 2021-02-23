@@ -25,8 +25,7 @@ program.parse(process.argv);
 
   const entrypoints: Entrypoints = JSON.parse(stripJsonComments(entrypointsJsonStr));
 
-  const tmpDir = path.resolve(__dirname, "../tmp");
-  const outDir = path.resolve(tmpDir, "out");
+  const outDir = path.resolve(options.outPath);
   fs.mkdir(outDir, { recursive: true });
 
   const dModuleMap = await crawl(entrypoints, { cachePath: options.cachePath });

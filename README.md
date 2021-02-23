@@ -1,5 +1,7 @@
 # Adobe UXP Types Crawler
 
+Crawls the Adobe UXP documentation and generates Typescript declaration files.
+
 ## Usage
 
 ```bash

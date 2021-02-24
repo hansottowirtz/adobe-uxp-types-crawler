@@ -1,6 +1,8 @@
 # Adobe UXP Types Crawler
 
-Crawls the Adobe UXP documentation and generates Typescript declaration files.
+Currently includes types for Adobe Photoshop.
+
+This project crawls the Adobe UXP documentation and generates Typescript declaration files.
 
 ## Usage
 
@@ -32,7 +34,7 @@ stitch together the typings files.
 
 See `res/entrypoints.jsonc` for configuration and overrides of the crawler.
 
-## Running
+## Crawling
 
 (minimum Node version: 14)
 
@@ -43,12 +45,26 @@ npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path re
 
 ## Publishing
 
+This project is managed with a very basic Lerna setup.
+
 ```bash
 npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path packages/photoshop --cache-path tmp/cache
+```
+
+Bumping package versions:
+```bash
+npx lerna version --no-git-tag-version --no-push
+```
+
+__Publishing to npm is currently done in Github Actions.__, based on the Lerna version. See `.github/workflows/build-and-publish.yml`.
+
+Manually publishing:
+```bash
 npx lerna publish from-package
 ```
 
 ## Credits
 
 This project started from [AdobeXD/typings](https://github.com/AdobeXD/typings/issues/28), which did not include types for Photoshop.
-Missing enums were taken from [bbb999/Types-For-Adobe](https://github.com/bbb999/Types-for-Adobe/blob/master/Photoshop/2015.5/index.d.ts).
+Descriptor enums and interfaces were taken from [simonhenke/photoshop-types](https://github.com/simonhenke/photoshop-types).
+A missing interfaces was taken from [bbb999/Types-For-Adobe](https://github.com/bbb999/Types-for-Adobe/blob/master/Photoshop/2015.5/index.d.ts).

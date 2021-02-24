@@ -4,10 +4,10 @@ import * as dts from "dts-dom";
 import { DeclarationFlags, Parameter, ParameterFlags } from "dts-dom";
 import deepEqual from "fast-deep-equal";
 
-// const t: dts.Type = {
-//   kind: "type-parameter",
-//   name: 'abc'
-// }
+const t: dts.Type = {
+  kind: "array",
+  type: "ActionDescriptor" as any
+}
 
 interface InterfaceConfig {
   urlType?: UrlType;
@@ -22,18 +22,22 @@ export interface Entrypoints {
   entrypoints: {
     type: "index" | "interface";
     url: string;
-    interfaceConfig: InterfaceConfig;
+    interfaceConfig?: InterfaceConfig;
   }[];
   generatorConfig: {
     path: string[];
     config: {
-      extendsInterfaces: string[];
-      prependTemplate: string;
-      returnType: dts.Type;
+      extendsInterfaces?: string[];
+      prependTemplates?: string[];
+      returnType?: dts.Type;
+      paramsTypes?: Record<string, dts.Type>;
+      paramsFlags?: Record<string, {
+        optional?: boolean;
+      }>;
     };
   }[];
-  globals: string[];
-  urlInterfaceConfig: Record<string, InterfaceConfig>;
+  globals?: string[];
+  urlInterfaceConfig?: Record<string, InterfaceConfig>;
 }
 
 type UrlType = "index" | "interface" | "module" | "globals";
@@ -69,7 +73,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
 
   const page = await browser.newPage();
 
-  page.on('console', (e) => console.log('[Puppeteer]', e.text()));
+  page.on("console", (e) => console.log("[Puppeteer]", e.text()));
 
   /** Maps urls to its type */
   const urlTypesMap = new Map<string, UrlType>();
@@ -246,9 +250,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
             .trim();
         }
         if (subPartCurrParameterName && child.matches("table")) {
-          const trTags = Array.from(
-            child.querySelectorAll("tbody tr")
-          );
+          const trTags = Array.from(child.querySelectorAll("tbody tr"));
           currDefinition.paramsTypes[subPartCurrParameterName] = trTags.map((trTag) => ({
             name: trTag.children[0].textContent.replace("?", ""),
             type: trTag.children[1].textContent,
@@ -354,17 +356,25 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
 
         if (def0.paramsTypes[paramName]) {
           const t: dts.Type = {
-            kind: 'object',
-            members: def0.paramsTypes[paramName].map((v) => ({ kind: "property", name: v.name, type: v.type as any}))
-          }
+            kind: "object",
+            members: def0.paramsTypes[paramName].map((v) => ({
+              kind: "property",
+              name: v.name,
+              type: v.type as any,
+            })),
+          };
           paramType = t;
         }
+
+        paramType = attrOverrides?.config?.paramsTypes?.[paramName] || paramType;
+
+        const isOptional = attrOverrides?.config?.paramsFlags?.[paramName]?.optional || rawParam.includes("?");
 
         const dParam: Parameter = {
           name: paramName,
           type: objectToAny(paramType) as any,
           kind: "parameter",
-          flags: rawParam.includes("?") ? ParameterFlags.Optional : ParameterFlags.None,
+          flags: isOptional ? ParameterFlags.Optional : ParameterFlags.None,
         };
         return dParam;
       });

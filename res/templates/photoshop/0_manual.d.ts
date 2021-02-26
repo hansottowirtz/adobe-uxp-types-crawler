@@ -101,6 +101,10 @@ declare module "photoshop" {
     [key: string]: any;
   }
 
+  interface Layer {
+    name: string;
+  }
+
   /**
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler

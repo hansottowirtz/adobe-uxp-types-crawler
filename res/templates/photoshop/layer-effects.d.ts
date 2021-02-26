@@ -43,7 +43,7 @@ declare module "photoshop" {
     _value: BevelTechnique;
   }
 
-  enum BevelTechnique {
+  const enum BevelTechnique {
     softMatte = "softMatte",
     preciseMatte = "preciseMatte",
     slopeLimitMatte = "slopeLimitMatte",
@@ -54,7 +54,7 @@ declare module "photoshop" {
     _value: BevelEmbossStyle;
   }
 
-  enum BevelEmbossStyle {
+  const enum BevelEmbossStyle {
     innerBevel = "innerBevel",
     outerBevel = "outerBevel",
     emboss = "emboss",
@@ -67,7 +67,7 @@ declare module "photoshop" {
     _value: BevelEmbossStampStyle;
   }
 
-  enum BevelEmbossStampStyle {
+  const enum BevelEmbossStampStyle {
     stampOut = "stampOut",
     in = "in",
   }
@@ -128,7 +128,7 @@ declare module "photoshop" {
     _value: InnerGlowSourceType;
   }
 
-  enum InnerGlowSourceType {
+  const enum InnerGlowSourceType {
     edgeGlow = "edgeGlow",
     centerGlow = "centerGlow",
   }
@@ -154,7 +154,7 @@ declare module "photoshop" {
     _value: FF;
   }
 
-  enum FrameFill {
+  const enum FrameFill {
     solidFill = "solidFill",
     gradientFill = "gradientFill",
     pattern = "pattern",
@@ -165,7 +165,7 @@ declare module "photoshop" {
     _value: FrameStyle;
   }
 
-  enum FrameStyle {
+  const enum FrameStyle {
     insetFrame = "insetFrame",
     outsetFrame = "outsetFrame",
     centeredFrame = "centeredFrame",
@@ -268,7 +268,7 @@ declare module "photoshop" {
     _value: MatteTechnique;
   }
 
-  enum MatteTechnique {
+  const enum MatteTechnique {
     softMatte = "softMatte",
     preciseMatte = "preciseMatte",
   }
@@ -279,7 +279,7 @@ declare module "photoshop" {
     curve?: CurvePointDescriptor[];
   }
 
-  enum ShapeCurveName {
+  const enum ShapeCurveName {
     Linear = "Linear",
     Cone = "$$$/Contours/Defaults/Cone=Cone",
     ConeInverted = "$$$/Contours/Defaults/ConeInverted=Cone - Inverted",

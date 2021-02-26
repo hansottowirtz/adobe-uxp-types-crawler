@@ -30,7 +30,7 @@ declare module "photoshop" {
     _value: FontCaps;
   }
 
-  enum FontCaps {
+  const enum FontCaps {
     normal = "normal",
     smallCaps = "smallCaps",
     allCaps = "allCaps",
@@ -41,7 +41,7 @@ declare module "photoshop" {
     _value: DigiSet;
   }
 
-  enum DigiSet {
+  const enum DigiSet {
     defaultDigits = "defaultDigits",
     arabicDigits = "arabicDigits",
     farsiDigits = "farsiDigits",
@@ -53,7 +53,7 @@ declare module "photoshop" {
     _value: Kashidas;
   }
 
-  enum Kashidas {
+  const enum Kashidas {
     kashidaDefault = "kashidaDefault",
   }
 
@@ -62,7 +62,7 @@ declare module "photoshop" {
     _value: Baseline;
   }
 
-  enum Baseline {
+  const enum Baseline {
     normal = "normal",
     superScript = "superScript",
     subScript = "subScript",
@@ -73,7 +73,7 @@ declare module "photoshop" {
     _value: OtBaseline;
   }
 
-  enum OtBaseline {
+  const enum OtBaseline {
     normal = "normal",
     superScript = "superScript",
     subScript = "subScript",
@@ -86,7 +86,7 @@ declare module "photoshop" {
     _value: StrikeThrough;
   }
 
-  enum StrikeThrough {
+  const enum StrikeThrough {
     xHeightStrikethroughOn = "xHeightStrikethroughOn",
     xHeightStrikethroughOff = "xHeightStrikethroughOff",
   }
@@ -96,7 +96,7 @@ declare module "photoshop" {
     _value: Underline;
   }
 
-  enum Underline {
+  const enum Underline {
     underlineOnLeftInVertical = "underlineOnLeftInVertical",
     underlineOnRightInVertical = "underlineOnRightInVertical",
     underlineOff = "underlineOff",
@@ -107,7 +107,7 @@ declare module "photoshop" {
     _value: FigureStyle;
   }
 
-  enum FigureStyle {
+  const enum FigureStyle {
     normal = "normal",
     tabularLining = "tabularLining",
     proportionalOldStyle = "proportionalOldStyle",
@@ -120,7 +120,7 @@ declare module "photoshop" {
     _value: BaselineDirection;
   }
 
-  enum BaselineDirection {
+  const enum BaselineDirection {
     withStream = "withStream",
     // TODO: more?
   }
@@ -130,7 +130,7 @@ declare module "photoshop" {
     _value: TextLanguage;
   }
 
-  enum TextLanguage {
+  const enum TextLanguage {
     oldGermanLanguage = "oldGermanLanguage",
     greekLanguage = "greekLanguage",
     hungarianLanguage = "hungarianLanguage",
@@ -182,7 +182,7 @@ declare module "photoshop" {
     _value: JapaneseAlternate;
   }
 
-  enum JapaneseAlternate {
+  const enum JapaneseAlternate {
     defaultForm = "defaultForm",
     traditionalForm = "traditionalForm",
     expertForm = "expertForm",
@@ -204,7 +204,7 @@ declare module "photoshop" {
     _value: GridAlignment;
   }
 
-  enum GridAlignment {
+  const enum GridAlignment {
     roman = "roman",
     bottom = "bottom",
     ifcbottom = "icfbottom",
@@ -276,7 +276,7 @@ declare module "photoshop" {
     _value: AutoKern;
   }
 
-  enum AutoKern {
+  const enum AutoKern {
     metricsKern = "metricsKern",
     opticalKern = "opticalKern",
     manual = "manual",
@@ -287,7 +287,7 @@ declare module "photoshop" {
     _value: DirOverride;
   }
 
-  enum DirOverride {
+  const enum DirOverride {
     dirOverrideDefault = "dirOverrideDefault",
     dirOverrideLTR = "dirOverrideLTR",
     dirOverrideRTL = "dirOverrideRTL",
@@ -298,7 +298,7 @@ declare module "photoshop" {
     _value: DiacVPos;
   }
 
-  enum DiacVPos {
+  const enum DiacVPos {
     diacVPosOpenType = "diacVPosOpenType",
     diacVPosOff = "diacVPosOff",
     diacVPosLoose = "diacVPosLoose",
@@ -311,7 +311,7 @@ declare module "photoshop" {
     _value: WariChuJustification;
   }
 
-  enum WariChuJustification {
+  const enum WariChuJustification {
     wariChuAutoJustify = "wariChuAutoJustify",
     wariChuCenterJustify = "wariChuCenterJustify",
     wariChuFullJustifyLastLineCenter = "wariChuFullJustifyLastLineCenter",
@@ -327,7 +327,7 @@ declare module "photoshop" {
     _value: LineCap;
   }
 
-  enum LineCap {
+  const enum LineCap {
     buttCap = "buttCap",
     roundCap = "roundCap",
     squareCap = "squareCap",
@@ -338,7 +338,7 @@ declare module "photoshop" {
     _value: LineJoin;
   }
 
-  enum LineJoin {
+  const enum LineJoin {
     miterJoin = "miterJoin",
     roundJoin = "roundJoin",
     bevelJoin = "bevelJoin",
@@ -416,7 +416,7 @@ declare module "photoshop" {
     _value: PathTypeEffect;
   }
 
-  enum PathTypeEffect {
+  const enum PathTypeEffect {
     rainbowEffect = "rainbowEffect",
     // TODO: more?
   }
@@ -426,7 +426,7 @@ declare module "photoshop" {
     _value: PathTypeAlignment;
   }
 
-  enum PathTypeAlignment {
+  const enum PathTypeAlignment {
     baselineAlignment = "baselineAlignment",
     centerAlignment = "centerAlignment",
   }
@@ -436,7 +436,7 @@ declare module "photoshop" {
     _value: PathTypeAlignTo;
   }
 
-  enum PathTypeAlignTo {
+  const enum PathTypeAlignTo {
     toPathTop = "toPathTop",
     toPathBottom = "toPathBottom",
     toPathCenter = "toPathCenter",
@@ -447,7 +447,7 @@ declare module "photoshop" {
     _value: FramBaselineAlignment;
   }
 
-  enum FramBaselineAlignment {
+  const enum FramBaselineAlignment {
     alignByAscent = "alignByAscent",
     alignByCapHeight = "alignByCapHeight",
     alignByLeading = "alignByLeading",
@@ -461,7 +461,7 @@ declare module "photoshop" {
     _value: Char;
   }
 
-  enum Char {
+  const enum Char {
     box = "box",
     paint = "paint", // point/paint bug
   }
@@ -471,7 +471,7 @@ declare module "photoshop" {
     _value: TextGridding;
   }
 
-  enum TextGridding {
+  const enum TextGridding {
     none = "none",
     round = "round",
     systemMetrics = "systemMetrics",
@@ -508,7 +508,7 @@ declare module "photoshop" {
     _value: Burasagari;
   }
 
-  enum Burasagari {
+  const enum Burasagari {
     burasagariNone = "burasagariNone",
     burasagariStandard = "burasagariStandard",
     burasagariStrong = "burasagariStrong",
@@ -519,7 +519,7 @@ declare module "photoshop" {
     _value: KinsokuSetName;
   }
 
-  enum KinsokuSetName {
+  const enum KinsokuSetName {
     None = "None",
     Hard = "Hard",
     Soft = "Soft",
@@ -530,7 +530,7 @@ declare module "photoshop" {
     _value: MojiKumiName;
   }
 
-  enum MojiKumiName {
+  const enum MojiKumiName {
     Photoshop6MojiKumiNone = "Photoshop6MojiKumiNone",
     Photoshop6MojiKumiSet1 = "Photoshop6MojiKumiSet1",
     Photoshop6MojiKumiSet2 = "Photoshop6MojiKumiSet2",
@@ -538,7 +538,7 @@ declare module "photoshop" {
     Photoshop6MojiKumiSet4 = "Photoshop6MojiKumiSet4",
   }
 
-  enum antiAliasType {
+  const enum antiAliasType {
     antiAliasNone = "antiAliasNone",
     antiAliasSharp = "antiAliasSharp",
     antiAliasCrisp = "antiAliasCrisp",

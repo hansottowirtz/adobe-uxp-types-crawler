@@ -5,7 +5,7 @@ declare module "photoshop" {
     _value: GradientForm;
   }
 
-  enum GradientForm {
+  const enum GradientForm {
     customStops = "customStops",
     colorNoise = "colorNoise",
   }
@@ -15,7 +15,7 @@ declare module "photoshop" {
     _value: ColorStopType;
   }
 
-  enum ColorStopType {
+  const enum ColorStopType {
     userStop = "userStop",
     foregroundColor = "foregroundColor",
     backgroundColor = "backgroundColor",
@@ -73,7 +73,7 @@ declare module "photoshop" {
     _value: GradientType;
   }
 
-  enum GradientType {
+  const enum GradientType {
     linear = "linear",
     radial = "radial",
     angle = "angle",

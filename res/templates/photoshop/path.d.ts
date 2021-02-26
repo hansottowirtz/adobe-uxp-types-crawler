@@ -15,7 +15,7 @@ declare module "photoshop" {
     _value: PathKind;
   }
 
-  enum PathKind {
+  const enum PathKind {
     vectorMask = "vectorMask",
     workPath = "workPath",
     clippingPath = "clippingPath",
@@ -32,7 +32,7 @@ declare module "photoshop" {
     _value: ShapeOperation;
   }
 
-  enum ShapeOperation {
+  const enum ShapeOperation {
     add = "add",
     subtract = "subtract",
     intersect = "intersect",

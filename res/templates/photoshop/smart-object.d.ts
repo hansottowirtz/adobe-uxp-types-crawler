@@ -31,7 +31,7 @@ declare module "photoshop" {
     _value: PlacedContentType;
   }
 
-  enum PlacedContentType {
+  const enum PlacedContentType {
     rasterizeContent = "rasterizeContent",
     vectorData = "vectorData",
   }
@@ -59,7 +59,7 @@ declare module "photoshop" {
     _kind: FileReferenceKind;
   }
 
-  enum FileReferenceKind {
+  const enum FileReferenceKind {
     local = "local",
     cloud = "cloud",
   }
@@ -79,7 +79,7 @@ declare module "photoshop" {
     _value: AdobeStockLiceneseState;
   }
 
-  enum AdobeStockLiceneseState {
+  const enum AdobeStockLiceneseState {
     licensed = "licensed",
     unlicensed = "unlicensed",
   }

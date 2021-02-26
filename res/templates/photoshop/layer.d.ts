@@ -1,6 +1,6 @@
 // Manually created by @simonhenke
 declare module "photoshop" {
-  enum LayerKind {
+  const enum LayerKind {
     any = 0,
     pixel = 1,
     adjustment = 2,
@@ -80,7 +80,7 @@ declare module "photoshop" {
     _value: LayerSectionType;
   }
 
-  enum LayerSectionType {
+  const enum LayerSectionType {
     layerSectionContent = "layerSectionContent",
     layerSectionStart = "layerSectionStart",
     layerSectionEnd = "layerSectionEnd",

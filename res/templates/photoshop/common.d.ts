@@ -1,6 +1,6 @@
 // Manually created by @simonhenke
 declare module "photoshop" {
-  enum BlendMode {
+  const enum BlendMode {
     normal = "normal",
     dissolve = "dissolve",
     darken = "darken",
@@ -35,7 +35,7 @@ declare module "photoshop" {
     _value: BlendMode;
   }
 
-  enum StrokeStyleAlign {
+  const enum StrokeStyleAlign {
     outside = "strokeStyleAlignOutside",
     inside = "strokeStyleAlignInside",
     center = "strokeStyleAlignCenter",

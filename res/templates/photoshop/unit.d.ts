@@ -1,6 +1,6 @@
 // Manually created by @simonhenke
 declare module "photoshop" {
-  enum Unit {
+  const enum Unit {
     angleUnit = "angleUnit",
     densityUnit = "densityUnit",
     distanceUnit = "distanceUnit",

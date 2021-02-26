@@ -44,7 +44,7 @@ declare module "photoshop" {
     opacity: number
   }
 
-  enum ColorName {
+  const enum ColorName {
     none = 'none',
     yellowColor = 'yellowColor',
     red = 'red',

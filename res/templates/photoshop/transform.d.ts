@@ -24,7 +24,7 @@ declare module "photoshop" {
     _value: WarpStyle;
   }
 
-  enum WarpStyle {
+  const enum WarpStyle {
     warpNone = "warpNone",
     warpArc = "warpArc",
     warpArcLower = "warpArcLower",

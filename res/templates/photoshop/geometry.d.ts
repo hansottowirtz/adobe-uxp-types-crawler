@@ -5,7 +5,7 @@ declare module "photoshop" {
     _value: Alignment;
   }
 
-  enum Alignment {
+  const enum Alignment {
     left = "left",
     center = "center",
     right = "right",
@@ -15,7 +15,7 @@ declare module "photoshop" {
     justifyAll = "justifyAll",
   }
 
-  enum Direction {
+  const enum Direction {
     vertical = "vertical",
     horizontal = "horizontal",
   }
@@ -58,7 +58,7 @@ declare module "photoshop" {
     _value: Orientation;
   }
 
-  enum Orientation {
+  const enum Orientation {
     horizontal = "horizontal",
     vertical = "vertical",
   }

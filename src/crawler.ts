@@ -27,6 +27,7 @@ export interface Entrypoints {
   generatorConfig: {
     path: string[];
     config: {
+      ignore?: boolean;
       extendsInterfaces?: string[];
       prependTemplates?: string[];
       returnType?: dts.Type;
@@ -341,6 +342,8 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
       const attrOverrides = entrypoints.generatorConfig.find(({ path }) =>
         deepEqual(path, [moduleName, interfaceName, attrName])
       );
+
+      if (attrOverrides?.config?.ignore) continue;
 
       const rawReturnType = def0.raw.split(":").reverse()[0].trim();
       const returnType = attrOverrides?.config?.returnType || (objectToAny(rawReturnType) as any);

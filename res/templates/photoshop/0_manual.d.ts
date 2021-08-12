@@ -84,7 +84,7 @@ declare module "photoshop" {
     /**
      * This is the ActionReference, the element on which this action should be played
      */
-    _target: {
+    _target?: {
       /**
        * @example "document"
        */
@@ -98,6 +98,10 @@ declare module "photoshop" {
        */
       _value: string;
     };
+    _isCommand?: boolean;
+    _options?: {
+      dialogOptions?: "dontDisplay" | "display";
+    };
     [key: string]: any;
   }
 
@@ -110,7 +114,7 @@ declare module "photoshop" {
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
    * From https://github.com/AdobeDocs/uxp-photoshop/blob/a0aa32139d/src/pages/ps_reference/media/advanced/batchplay.md
    */
-  type Descriptor = ActionDescriptor;
+  type Descriptor = any;
 
   /**
    * Incomplete definition.

@@ -147,7 +147,7 @@ declare module "photoshop" {
    * From https://www.adobe.io/photoshop/uxp/ps_reference/media/advanced/cpp-pluginsdk/
    */
   interface PhotoshopMessaging {
-    sendSDKPluginMessage(id: string, content: string): any;
+    sendSDKPluginMessage(id: string, content: {[key: string]: any}): any;
     addSDKMessagingListener(cb: (...args: any[]) => any): void;
     removeSDKMessagingListener(cb: (...args: any[]) => any): void;
   }

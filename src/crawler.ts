@@ -104,10 +104,12 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
   console.log("Collecting all interface urls...");
 
   for (const entrypoint of entrypoints.entrypoints) {
-    await page.goto(`${entrypoints.base}${entrypoint.url}`, { waitUntil: ["domcontentloaded"] });
+    const url = `${entrypoints.base}${entrypoint.url}`;
+    console.log(`fetch url: ${url}`);
+    await page.goto(url, { waitUntil: ["domcontentloaded"] });
     if (entrypoint.type === "index") {
       const entriesUlTag = (
-        await (await page.$("main ul.spectrum-Body--M > li > a")).$x("../..")
+        await (await page.$("main ul.spectrum-Body--sizeM > li > a")).$x("../..")
       )[0];
       const entriesNamesAndUrls = await page.evaluate((classesUlTag: HTMLUListElement) => {
         return Array.from(classesUlTag.querySelectorAll("a")).map((a) => {

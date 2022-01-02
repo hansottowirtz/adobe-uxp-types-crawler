@@ -2,6 +2,9 @@
   "name": "adobe-uxp-types-crawler",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "start": "ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path tmp/out --cache-path tmp/cache"
+  },
   "dependencies": {
     "commander": "^7.1.0",
     "dts-dom": "^3.6.0",

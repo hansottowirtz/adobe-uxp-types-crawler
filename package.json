@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "crawl": "ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path tmp/out --cache-path tmp/cache"
+    "crawl": "ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path tmp/out --cache-path tmp/cache",
+    "test": "tsd packages/photoshop && tsd packages/uxp"
   },
   "dependencies": {
     "commander": "^8.3.0",
@@ -19,6 +20,7 @@
     "@types/lodash": "^4.14.178",
     "lerna": "^4.0.0",
     "ts-node": "^10.4.0",
+    "tsd": "^0.19.1",
     "typescript": "^4.5.4"
   },
   "engines": {

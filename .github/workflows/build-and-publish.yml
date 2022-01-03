@@ -17,6 +17,8 @@ jobs:
           npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path tmp/out --cache-path tmp/cache
           cp tmp/out/photoshop.d.ts packages/photoshop/
           cp tmp/out/uxp.d.ts packages/uxp/
+      - name: Test
+        run: npm run test
       - name: Set Current Version
         shell: bash -ex {0}
         run: |

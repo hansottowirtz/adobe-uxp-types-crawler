@@ -33,8 +33,6 @@ program.parse(process.argv);
 
   console.log("Writing to disk...");
 
-  debugger;
-
   for (const [moduleName, dModule] of dModuleMap) {
     let fileContent = emit(dModule);
     const moduleOverrides = entrypoints.generatorConfig.find(({ path }) =>

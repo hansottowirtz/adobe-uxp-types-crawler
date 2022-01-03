@@ -1,16 +1,30 @@
 // Manually created by @simonhenke
 declare module "photoshop" {
-  const enum Unit {
-    angleUnit = "angleUnit",
-    densityUnit = "densityUnit",
-    distanceUnit = "distanceUnit",
-    percentUnit = "percentUnit",
-    pixelsUnit = "pixelsUnit",
-    pointsUnit = "pointsUnit",
-    millimetersUnit = "millimetersUnit",
-    centimetersUnit = "centimetersUnit",
-    inchesUnit = "inchesUnit",
-    picasUnit = "picasUnit",
+  type Unit =
+    | "angleUnit"
+    | "densityUnit"
+    | "distanceUnit"
+    | "percentUnit"
+    | "pixelsUnit"
+    | "pointsUnit"
+    | "millimetersUnit"
+    | "centimetersUnit"
+    | "inchesUnit"
+    | "picasUnit"
+    | "noneUnit";
+
+  type RulerUnit =
+    | "rulerPixels"
+    | "rulerPoints"
+    | "rulerInches"
+    | "rulerCm"
+    | "rulerMm"
+    | "rulerPercent"
+    | "rulerPicas";
+
+  interface RulerUnitsEnum {
+    _enum: "rulerUnits";
+    _value: RulerUnit;
   }
 
   interface Fraction {
@@ -22,34 +36,48 @@ declare module "photoshop" {
     _unit: Unit;
     _value: number;
   }
+
   interface AngleValue extends UnitValue {
-    _unit: Unit.angleUnit;
+    _unit: "angleUnit";
   }
+
   interface DensityValue extends UnitValue {
-    _unit: Unit.densityUnit;
+    _unit: "densityUnit";
   }
+
   interface DistanceValue extends UnitValue {
-    _unit: Unit.distanceUnit;
+    _unit: "distanceUnit";
   }
+
   interface PercentValue extends UnitValue {
-    _unit: Unit.percentUnit;
+    _unit: "percentUnit";
   }
+
   interface PixelValue extends UnitValue {
-    _unit: Unit.pixelsUnit;
+    _unit: "pixelsUnit";
   }
+
   interface PointValue extends UnitValue {
-    _unit: Unit.pointsUnit;
+    _unit: "pointsUnit";
   }
+
   interface MillimeterValue extends UnitValue {
-    _unit: Unit.millimetersUnit;
+    _unit: "millimetersUnit";
   }
+
   interface CentimeterValue extends UnitValue {
-    _unit: Unit.centimetersUnit;
+    _unit: "centimetersUnit";
   }
+
   interface InchValue extends UnitValue {
-    _unit: Unit.inchesUnit;
+    _unit: "inchesUnit";
   }
+
   interface PicaValue extends UnitValue {
-    _unit: Unit.picasUnit;
+    _unit: "picasUnit";
+  }
+
+  interface NoneValue extends UnitValue {
+    _unit: "noneUnit";
   }
 }

@@ -24,24 +24,23 @@ declare module "photoshop" {
     _value: WarpStyle;
   }
 
-  const enum WarpStyle {
-    warpNone = "warpNone",
-    warpArc = "warpArc",
-    warpArcLower = "warpArcLower",
-    warpArcUpper = "warpArcUpper",
-    warpArch = "warpArch",
-    warpBulge = "warpBulge",
-    warpShellLower = "warpShellLower",
-    warpShellUpper = "warpShellUpper",
-    warpFlag = "warpFlag",
-    warpRave = "warpRave",
-    warpFish = "warpFish",
-    warpRize = "warpRize",
-    warpFisheye = "warpFisheye",
-    warpInflate = "warpInflate",
-    warpSqueeze = "warpSqueeze",
-    warpTwist = "warpTwist",
-  }
+  type WarpStyle =
+    | "warpNone"
+    | "warpArc"
+    | "warpArcLower"
+    | "warpArcUpper"
+    | "warpArch"
+    | "warpBulge"
+    | "warpShellLower"
+    | "warpShellUpper"
+    | "warpFlag"
+    | "warpRave"
+    | "warpFish"
+    | "warpRize"
+    | "warpFisheye"
+    | "warpInflate"
+    | "warpSqueeze"
+    | "warpTwist";
 
   interface RationalPointList {
     _objList: "rationalPoint";
@@ -66,4 +65,23 @@ declare module "photoshop" {
     vOrder: number;
     customEnvelopeWarp: CustomEnvelopeWarpDescriptor;
   }
+
+  type AlignDistributeSelector =
+    | "ADSCentersH"
+    | "ADSCentersV"
+    | "ADSLefts"
+    | "ADSRights"
+    | "ADSTops"
+    | "ADSBottoms";
+
+  type QuadCenterState =
+    | "QCSCorner0" // topLeft
+    | "QCSSide0" // topCenter
+    | "QCSCorner1" // topRight
+    | "QCSSide3" // middleLeft
+    | "QCSAverage" // center
+    | "QCSSide1" // middleRight
+    | "QCSCorner3" // bottomLeft
+    | "QCSSide2" // bottomCenter
+    | "QCSCorner2"; // bottomRight
 }

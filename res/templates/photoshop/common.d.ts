@@ -1,43 +1,48 @@
 // Manually created by @simonhenke
 declare module "photoshop" {
-  const enum BlendMode {
-    normal = "normal",
-    dissolve = "dissolve",
-    darken = "darken",
-    multiply = "multiply",
-    colorBurn = "colorBurn",
-    linearBurn = "linearBurn",
-    darkerColor = "darkerColor",
-    lighten = "lighten",
-    screen = "screen",
-    colorDodge = "colorDodge",
-    linearDodge = "linearDodge",
-    lighterColor = "lighterColor",
-    overlay = "overlay",
-    softLight = "softLight",
-    hardLight = "hardLight",
-    vividLight = "vividLight",
-    linearLight = "linearLight",
-    pinLight = "pinLight",
-    hardMix = "hardMix",
-    difference = "difference",
-    exclusion = "exclusion",
-    subtract = "blendSubtraction",
-    divide = "blendDivide",
-    hue = "hue",
-    saturation = "saturation",
-    color = "color",
-    luminosity = "luminosity",
-  }
+  type BlendMode =
+    | "normal"
+    | "dissolve"
+    | "darken"
+    | "multiply"
+    | "colorBurn"
+    | "linearBurn"
+    | "darkerColor"
+    | "lighten"
+    | "screen"
+    | "colorDodge"
+    | "linearDodge"
+    | "lighterColor"
+    | "overlay"
+    | "softLight"
+    | "hardLight"
+    | "vividLight"
+    | "linearLight"
+    | "pinLight"
+    | "hardMix"
+    | "difference"
+    | "exclusion"
+    | "blendSubtraction"
+    | "blendDivide"
+    | "hue"
+    | "saturation"
+    | "color"
+    | "luminosity"
+    // Healing Tools
+    | "replace"
+    // Brush Tools
+    | "behind"
+    | "clearEnum"
+    // Dodge & Burn Tools
+    | "dodgeS"
+    | "dodgeM"
+    | "dodgeH"
+    // Saturation Tool
+    | "desaturate"
+    | "saturate";
 
   interface BlendModeEnum {
     _enum: "blendMode";
     _value: BlendMode;
-  }
-
-  const enum StrokeStyleAlign {
-    outside = "strokeStyleAlignOutside",
-    inside = "strokeStyleAlignInside",
-    center = "strokeStyleAlignCenter",
   }
 }

@@ -15,12 +15,7 @@ declare module "photoshop" {
     _value: PathKind;
   }
 
-  const enum PathKind {
-    vectorMask = "vectorMask",
-    workPath = "workPath",
-    clippingPath = "clippingPath",
-    normalPath = "normalPath",
-  }
+  type PathKind = "vectorMask" | "workPath" | "clippingPath" | "normalPath";
 
   interface PathContentsDescriptor {
     _obj: "pathClass";
@@ -32,13 +27,12 @@ declare module "photoshop" {
     _value: ShapeOperation;
   }
 
-  const enum ShapeOperation {
-    add = "add",
-    subtract = "subtract",
-    intersect = "intersect",
-    interfaceIconFrameDimmed = "interfaceIconFrameDimmed",
-    xor = "xor",
-  }
+  type ShapeOperation =
+    | "add"
+    | "subtract"
+    | "intersect"
+    | "interfaceIconFrameDimmed"
+    | "xor";
 
   interface PathComponentDescriptor {
     _obj: "pathComponent";

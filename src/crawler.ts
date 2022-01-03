@@ -62,6 +62,7 @@ interface AttrList {
   accessors: Attr[];
   methods: Attr[];
   functions: Attr[];
+  variables: Attr[];
 }
 
 export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string }) => {
@@ -109,10 +110,12 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
   console.log("Collecting all interface urls...");
 
   for (const entrypoint of entrypoints.entrypoints) {
-    await page.goto(`${entrypoints.base}${entrypoint.url}`, { waitUntil: ["domcontentloaded"] });
+    const entrypointUrl = `${entrypoints.base}${entrypoint.url}`;
+    console.log('Going to', entrypointUrl)
+    await page.goto(entrypointUrl, { waitUntil: ["domcontentloaded"] });
     if (entrypoint.type === "index") {
       const entriesUlTag = (
-        await (await page.$("main ul.spectrum-Body--M > li > a")).$x("../..")
+        await (await page.$("main ul.spectrum-Body--sizeM > li > a")).$x("../..")
       )[0];
       const entriesNamesAndUrls = await page.evaluate((classesUlTag: HTMLUListElement) => {
         return Array.from(classesUlTag.querySelectorAll("a")).map((a) => {
@@ -165,7 +168,9 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
     .map(([url]) => url);
 
   for (const interfaceUrl of allInterfaceUrls) {
-    await page.goto(`${entrypoints.base}${interfaceUrl}`, { waitUntil: ["load"] });
+    const fullInterfaceUrl = `${entrypoints.base}${interfaceUrl}`;
+    console.log('Going to', fullInterfaceUrl)
+    await page.goto(fullInterfaceUrl, { waitUntil: ["load"] });
     const contentDivTag = (await (await page.$("main h3")).$x(".."))[0];
     const interfaceParsing = await page.evaluate((contentDivTag: HTMLDivElement) => {
       const preTagToExampleJsdocStr = (preTag: Element) => {
@@ -174,7 +179,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
         for (const lineTag of Array.from(
           preTag.querySelector("div > pre").querySelectorAll(".token-line")
         )) {
-          example += `\n${lineTag.textContent}`;
+          example += `\n${lineTag.textContent.trimEnd()}`;
         }
         return example;
       };
@@ -201,10 +206,11 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
         properties: [],
         constructors: [],
         functions: [],
+        variables: [],
       };
       for (const child of Array.from(contentDivTag.children)) {
-        if (child.matches(".spectrum-Heading--M")) {
-          // this will be "accessors", "properties", "constructors", "methods", "functions" or "index"
+        if (child.matches(".spectrum-Heading--sizeM")) {
+          // this will be "accessors", "properties", "constructors", "methods", "functions", "variables" or "index"
           part = child
             .querySelector("a")
             .getAttribute("href")
@@ -217,7 +223,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
         if (part === "start" && child.matches("pre")) {
           interfaceExamples.push(preTagToExampleJsdocStr(child));
         }
-        if (part === "start" && child.matches("p.spectrum-Body--M")) {
+        if (part === "start" && child.matches("p.spectrum-Body--sizeM")) {
           interfaceComments.push(child.textContent);
         }
 
@@ -228,9 +234,10 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
           continue;
         }
 
-        if (child.matches(".spectrum-Heading--S")) {
+        if (child.matches(".spectrum-Heading--sizeS")) {
           const name = child.textContent.replace("#", ""); // not really used
           resetCursors();
+          console.log(name);
           currAttr = {
             name,
             definitions: [],
@@ -240,11 +247,11 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
 
         if (!currAttr) continue; // below only if attr defined
 
-        if (child.matches("p.spectrum-Body--M") && child.textContent.trim() === "Parameters:") {
+        if (child.matches("p.spectrum-Body--sizeM") && child.textContent.trim() === "Parameters:") {
           subPart = "parameters";
           continue;
         }
-        if (subPart === "parameters" && child.matches("p.spectrum-Body--M")) {
+        if (subPart === "parameters" && child.matches("p.spectrum-Body--sizeM")) {
           const raw = child.textContent;
           subPartCurrParameterName = raw
             .split(":")[0]
@@ -264,7 +271,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
 
         if (subPart === "parameters") continue; // below only "main" is possible
 
-        if (child.matches("p.spectrum-Body--M") && child.textContent.match(/^(•|▸|\+) /)) {
+        if (child.matches("p.spectrum-Body--sizeM") && child.textContent.match(/^(•|▸|\+) /)) {
           const raw = child.textContent
             .replace(/^(•|▸|\+) /, "")
             .replaceAll("‹", "<")
@@ -276,7 +283,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
             paramsTypes: {},
           };
           currAttr.definitions.push(currDefinition);
-        } else if (child.matches("p.spectrum-Body--M")) {
+        } else if (child.matches("p.spectrum-Body--sizeM")) {
           if (["async"].includes(child.textContent.trim())) continue;
           currDefinition.comments.push(child.textContent);
         } else if (child.matches("pre")) {
@@ -311,6 +318,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
     }
 
     for (const attr of [
+      ...interfaceParsing.attrs.variables,
       ...interfaceParsing.attrs.accessors,
       ...interfaceParsing.attrs.properties,
     ]) {

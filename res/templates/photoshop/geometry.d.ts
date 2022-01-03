@@ -5,20 +5,16 @@ declare module "photoshop" {
     _value: Alignment;
   }
 
-  const enum Alignment {
-    left = "left",
-    center = "center",
-    right = "right",
-    justifyLeft = "justifyLeft",
-    justifyCenter = "justifyCenter",
-    justifyRight = "justifyRight",
-    justifyAll = "justifyAll",
-  }
+  type Alignment =
+    | "left"
+    | "center"
+    | "right"
+    | "justifyLeft"
+    | "justifyCenter"
+    | "justifyRight"
+    | "justifyAll";
 
-  const enum Direction {
-    vertical = "vertical",
-    horizontal = "horizontal",
-  }
+  type Direction = "vertical" | "horizontal";
 
   interface UVRectangleDescriptor<UV extends UnitValue = UnitValue>
     extends UVTopRightBottomLeft<UV> {
@@ -33,20 +29,26 @@ declare module "photoshop" {
     vertical: number;
   }
 
-  interface UVPointDescriptor<UV extends UnitValue = UnitValue> {
+  interface UVPointDescriptor<UV extends UnitValue = PixelValue> {
     _obj: "paint" | "point";
     horizontal: UV;
     vertical: UV;
   }
 
-  interface TopRightBottomleft {
+  interface UVPointDescriptorXY<UV extends UnitValue = PixelValue> {
+    _obj: "paint" | "point";
+    x: UV;
+    y: UV;
+  }
+
+  interface TopRightBottomLeft {
     top: number;
     right: number;
     bottom: number;
     left: number;
   }
 
-  interface UVTopRightBottomLeft<UV extends UnitValue = UnitValue> {
+  interface UVTopRightBottomLeft<UV extends UnitValue = PixelValue> {
     top: UV;
     right: UV;
     bottom: UV;
@@ -58,12 +60,9 @@ declare module "photoshop" {
     _value: Orientation;
   }
 
-  const enum Orientation {
-    horizontal = "horizontal",
-    vertical = "vertical",
-  }
+  type Orientation = "horizontal" | "vertical";
 
-  interface RectangleDescriptor extends TopRightBottomleft {
+  interface RectangleDescriptor extends TopRightBottomLeft {
     _obj: "rectangle";
   }
 
@@ -84,4 +83,8 @@ declare module "photoshop" {
     number,
     number
   ];
+
+  type HorizontalLocation = "left" | "center" | "right";
+
+  type VerticalLocation = "top" | "center" | "bottomEnum";
 }

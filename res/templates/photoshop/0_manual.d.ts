@@ -64,6 +64,12 @@ declare module "photoshop" {
   /**
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
+   */
+  type ColorDescriptor = PsColor;
+
+  /**
+   * Incomplete definition.
+   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
    * From https://github.com/AdobeDocs/uxp-photoshop/blob/a0aa32139d/src/pages/ps_reference/media/advanced/batchplay.md
    */
   interface BatchPlayCommandOptions {
@@ -185,6 +191,25 @@ declare module "photoshop" {
       * If true, spot colors are saved.
       */
      spotColors?: boolean;
+  }
+
+
+  interface PhotoshopCore {
+    /**
+     * Incomplete definition.
+     * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
+     * From https://forums.creativeclouddeveloper.com/t/official-uxp-types-questions/3893
+     */
+    suppressResizeGripper: (obj: Record<string, any>) => void;
+  }
+
+  interface PhotoshopAction {
+    /**
+     * Incomplete definition.
+     * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
+     * From https://forums.creativeclouddeveloper.com/t/official-uxp-types-questions/3893
+     */
+    validateReference: (refs: Reference | Reference[]) => boolean;
   }
 
   /**

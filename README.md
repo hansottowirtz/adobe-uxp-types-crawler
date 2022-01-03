@@ -64,5 +64,5 @@ npx lerna publish from-package
 ## Credits
 
 This project started from [AdobeXD/typings](https://github.com/AdobeXD/typings/issues/28), which did not include types for Photoshop.
-Descriptor enums and interfaces were taken from [simonhenke/photoshop-types](https://github.com/simonhenke/photoshop-types).
-A missing interfaces was taken from [bbb999/Types-For-Adobe](https://github.com/bbb999/Types-for-Adobe/blob/master/Photoshop/2015.5/index.d.ts).
+Descriptor enums and interfaces were taken from [simonhenke/photoshop-types](https://github.com/simonhenke/photoshop-types).Other types were taken from [@types/photoshop](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/photoshop).
+A missing interface was taken from [bbb999/Types-For-Adobe](https://github.com/bbb999/Types-for-Adobe/blob/master/Photoshop/2015.5/index.d.ts).

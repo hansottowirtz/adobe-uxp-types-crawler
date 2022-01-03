@@ -194,7 +194,7 @@ declare module "uxp" {
     }
 
     class FileSystemProvider {
-      static isFileSystemProvider: (FileSystemProvider) => boolean;
+      static isFileSystemProvider: (fsp: any) => boolean;
 
       isFileSystemProvider: boolean;
 

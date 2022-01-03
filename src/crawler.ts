@@ -3,6 +3,7 @@ import path from "path";
 import * as dts from "dts-dom";
 import { DeclarationFlags, Parameter, ParameterFlags } from "dts-dom";
 import deepEqual from "fast-deep-equal";
+import { promises as fs } from "fs";
 
 const t: dts.Type = {
   kind: "array",
@@ -66,9 +67,13 @@ interface AttrList {
 export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string }) => {
   console.log("Launching Puppeteer...");
 
+  const userDataDir = path.resolve(opts.cachePath, "user-data-dir");
+
+  await fs.mkdir(userDataDir, { recursive: true });
+
   const browser = await puppeteer.launch({
     devtools: false,
-    userDataDir: path.resolve(opts.cachePath, "user-data-dir"),
+    userDataDir,
   });
 
   const page = await browser.newPage();

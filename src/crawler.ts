@@ -22,6 +22,7 @@ interface InterfaceConfig {
 
 export interface Entrypoints {
   base: string;
+  modules: string[];
   entrypoints: {
     type: "index" | "interface";
     url: string;
@@ -398,7 +399,10 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
 
   const dModuleMap = new Map<string, dts.ModuleDeclaration>();
 
-  debugger;
+  for (const moduleName of entrypoints.modules) {
+    const dModule = dts.create.module(moduleName);
+    dModuleMap.set(moduleName, dModule);
+  }
 
   for (const [interfaceUrl, interfaceParsing] of interfaceParsingMap.entries()) {
     const interfaceConfig = {
@@ -543,12 +547,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
       dInterface.members.push(dAttr);
     }
 
-    let dModule = dModuleMap.get(moduleName);
-    if (!dModule) {
-      dModule = dts.create.module(moduleName);
-      dModuleMap.set(moduleName, dModule);
-    }
-
+    const dModule = dModuleMap.get(moduleName);
     dModule.members.push(dInterface);
   }
 

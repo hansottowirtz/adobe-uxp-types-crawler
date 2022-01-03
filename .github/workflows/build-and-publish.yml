@@ -12,7 +12,11 @@ jobs:
       - name: Install
         run: npm ci
       - name: Build
-        run: npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path packages/photoshop --cache-path tmp/cache
+        run: |
+          mkdir -p tmp/out
+          npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path res/templates --out-path tmp/out --cache-path tmp/cache
+          cp tmp/out/photoshop.d.ts packages/photoshop/
+          cp tmp/out/uxp.d.ts packages/uxp/
       - name: Set Current Version
         shell: bash -ex {0}
         run: |

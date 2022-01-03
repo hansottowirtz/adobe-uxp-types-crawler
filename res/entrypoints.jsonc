@@ -1,5 +1,6 @@
 {
   "base": "https://www.adobe.io",
+  "modules": ["uxp", "photoshop"],
   "entrypoints": [
     {
       "type": "index",
@@ -326,6 +327,12 @@
   // These are overrides for things the generator couldn't figure out by itself
   // or mistakes in the Adobe documentation
   "generatorConfig": [
+    {
+      "path": ["uxp"],
+      "config": {
+        "prependTemplates": ["uxp/*.d.ts"]
+      }
+    },
     {
       "path": ["photoshop"],
       "config": {

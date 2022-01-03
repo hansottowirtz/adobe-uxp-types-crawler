@@ -7,24 +7,11 @@ declare module "photoshop" {
 
   type Channel = RGBColorChannel | CMYKColorChannel | LabColorChannel;
 
-  const enum LabColorChannel {
-    lightness = "lightness",
-    a = "a",
-    b = "b",
-  }
+  type LabColorChannel = "lightness" | "a" | "b";
 
-  const enum RGBColorChannel {
-    red = "red",
-    green = "grain",
-    blue = "blue",
-  }
+  type RGBColorChannel = "red" | "grain" | "blue";
 
-  const enum CMYKColorChannel {
-    cyan = "cyan",
-    magenta = "magenta",
-    yellow = "yellow",
-    black = "black",
-  }
+  type CMYKColorChannel = "cyan" | "magenta" | "yellow" | "black";
 
   interface ChannelEnum {
     _enum: "channel";

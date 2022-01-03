@@ -5,21 +5,14 @@ declare module "photoshop" {
     _value: GradientForm;
   }
 
-  const enum GradientForm {
-    customStops = "customStops",
-    colorNoise = "colorNoise",
-  }
+  type GradientForm = "customStops" | "colorNoise";
 
   interface ColorStopTypeEnum {
     _enum: "colorStopType";
     _value: ColorStopType;
   }
 
-  const enum ColorStopType {
-    userStop = "userStop",
-    foregroundColor = "foregroundColor",
-    backgroundColor = "backgroundColor",
-  }
+  type ColorStopType = "userStop" | "foregroundColor" | "backgroundColor";
 
   interface ColorStopDescriptor {
     _obj: "colorStop";
@@ -47,7 +40,7 @@ declare module "photoshop" {
   interface NoiseGradientDescriptor extends GenericGradientProperties {
     gradientForm: {
       _enum: "gradientForm";
-      _value: GradientForm.colorNoise;
+      _value: "colorNoise";
     };
     showTransparency?: boolean;
     vectorColor?: boolean;
@@ -61,7 +54,7 @@ declare module "photoshop" {
   interface CustomStopGradientDescriptor extends GenericGradientProperties {
     gradientForm: {
       _enum: "gradientForm";
-      _value: GradientForm.customStops;
+      _value: "customStops";
     };
     interfaceIconFrameDimmed?: number;
     colors?: ColorStopDescriptor[];
@@ -73,11 +66,7 @@ declare module "photoshop" {
     _value: GradientType;
   }
 
-  const enum GradientType {
-    linear = "linear",
-    radial = "radial",
-    angle = "angle",
-    reflected = "reflected",
-    diamond = "diamond",
-  }
+  type GradientType = "linear" | "radial" | "angle" | "reflected" | "diamond";
+
+  type GradientTypeNumeric = 0 | 1 | 2 | 3 | 4;
 }

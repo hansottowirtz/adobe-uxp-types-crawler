@@ -30,188 +30,149 @@ declare module "photoshop" {
     _value: FontCaps;
   }
 
-  const enum FontCaps {
-    normal = "normal",
-    smallCaps = "smallCaps",
-    allCaps = "allCaps",
-  }
+  type FontCaps = "normal" | "smallCaps" | "allCaps";
 
   interface DigiSetEnum {
     _enum: "digitSet";
     _value: DigiSet;
   }
 
-  const enum DigiSet {
-    defaultDigits = "defaultDigits",
-    arabicDigits = "arabicDigits",
-    farsiDigits = "farsiDigits",
-    hindiDigits = "hindiDigits",
-  }
+  type DigiSet = "defaultDigits" | "arabicDigits" | "farsiDigits" | "hindiDigits";
 
   interface KashidasEnum {
     _enum: "kashidas";
     _value: Kashidas;
   }
 
-  const enum Kashidas {
-    kashidaDefault = "kashidaDefault",
-  }
+  type Kashidas = "kashidaDefault"; // TODO: more?
 
   interface BaselineEnum {
     _enum: "baseline";
     _value: Baseline;
   }
 
-  const enum Baseline {
-    normal = "normal",
-    superScript = "superScript",
-    subScript = "subScript",
-  }
+  type Baseline = "normal" | "superScript" | "subScript";
 
   interface OtBaselineEnum {
     _enum: "otbaseline";
     _value: OtBaseline;
   }
 
-  const enum OtBaseline {
-    normal = "normal",
-    superScript = "superScript",
-    subScript = "subScript",
-    numerator = "numerator",
-    denominator = "denominator",
-  }
+  type OtBaseline = "normal" | "superScript" | "subScript" | "numerator" | "denominator";
 
   interface StrikeThroughEnum {
     _enum: "strikethrough";
     _value: StrikeThrough;
   }
 
-  const enum StrikeThrough {
-    xHeightStrikethroughOn = "xHeightStrikethroughOn",
-    xHeightStrikethroughOff = "xHeightStrikethroughOff",
-  }
+  type StrikeThrough = "xHeightStrikethroughOn" | "xHeightStrikethroughOff";
 
   interface UnderlineEnum {
     _enum: "underline";
     _value: Underline;
   }
 
-  const enum Underline {
-    underlineOnLeftInVertical = "underlineOnLeftInVertical",
-    underlineOnRightInVertical = "underlineOnRightInVertical",
-    underlineOff = "underlineOff",
-  }
+  type Underline =
+    | "underlineOnLeftInVertical"
+    | "underlineOnRightInVertical"
+    | "underlineOff";
 
   interface FigureStyleEnum {
     _enum: "figureStyle";
     _value: FigureStyle;
   }
 
-  const enum FigureStyle {
-    normal = "normal",
-    tabularLining = "tabularLining",
-    proportionalOldStyle = "proportionalOldStyle",
-    proportionalLining = "proportionalLining",
-    tabularOldStyle = "tabularOldStyle",
-  }
+  type FigureStyle =
+    | "normal"
+    | "tabularLining"
+    | "proportionalOldStyle"
+    | "proportionalLining"
+    | "tabularOldStyle";
 
   interface BaselineDirectionEnum {
     _enum: "baselineDirection";
     _value: BaselineDirection;
   }
 
-  const enum BaselineDirection {
-    withStream = "withStream",
-    // TODO: more?
-  }
+  type BaselineDirection = "withStream"; // TODO: more?
 
   interface TextLanguageEnum {
     _enum: "textLanguage";
     _value: TextLanguage;
   }
 
-  const enum TextLanguage {
-    oldGermanLanguage = "oldGermanLanguage",
-    greekLanguage = "greekLanguage",
-    hungarianLanguage = "hungarianLanguage",
-    icelandicLanguage = "icelandicLanguage",
-    italianLanguage = "italianLanguage",
-    japaneseLanguage = "japaneseLanguage",
-    croatianLanguage = "croatianLanguage",
-    latvianLanguage = "latvianLanguage",
-    lithuanianLanguage = "lithuanianLanguage",
-    nynorskNorwegianLanguage = "nynorskNorwegianLanguage",
-    polishLanguage = "polishLanguage",
-    romanianLanguage = "romanianLanguage",
-    rumanianLanguage = "rumanianLanguage",
-    russianLanguage = "russianLanguage",
-    serbianLanguage = "serbianLanguage",
-    slovakLanguage = "slovakLanguage",
-    slovenianLanguage = "slovenianLanguage",
-    spanishLanguage = "spanishLanguage",
-    standardFrenchLanguage = "standardFrenchLanguage",
-    standardGermanLanguage = "standardGermanLanguage",
-    germanLanguageReformed1996 = "germanLanguageReformed1996",
-    standardPortugueseLanguage = "standardPortugueseLanguage",
-    swedishLanguage = "swedishLanguage",
-    swissGermanLanguage = "swissGermanLanguage",
-    swissGermanLanguageOldRules = "swissGermanLanguageOldRules",
-    turkishLanguage = "turkishLanguage",
-    ukenglishLanguage = "ukenglishLanguage",
-    ukranianLanguage = "ukranianLanguage",
-    arabicLanguage = "arabicLanguage",
-    hebrewLanguage = "hebrewLanguage",
-    bokmalNorwegianLanguage = "bokmalNorwegianLanguage",
-    brazilianPortugueseLanguage = "brazilianPortugueseLanguage",
-    bulgarianLanguage = "bulgarianLanguage",
-    canadianFrenchLanguage = "canadianFrenchLanguage",
-    canadianEnglishLanguage = "canadianEnglishLanguage",
-    catalanLanguage = "catalanLanguage",
-    chineseLanguage = "chineseLanguage",
-    czechLanguage = "czechLanguage",
-    danishLanguage = "danishLanguage",
-    dutchLanguage = "dutchLanguage",
-    kdutchLanguageOldRules = "kdutchLanguageOldRules",
-    englishLanguage = "englishLanguage",
-    estonianLanguage = "estonianLanguage",
-    finnishLanguage = "finnishLanguage",
-  }
+  type TextLanguage =
+    | "oldGermanLanguage"
+    | "greekLanguage"
+    | "hungarianLanguage"
+    | "icelandicLanguage"
+    | "italianLanguage"
+    | "japaneseLanguage"
+    | "croatianLanguage"
+    | "latvianLanguage"
+    | "lithuanianLanguage"
+    | "nynorskNorwegianLanguage"
+    | "polishLanguage"
+    | "romanianLanguage"
+    | "rumanianLanguage"
+    | "russianLanguage"
+    | "serbianLanguage"
+    | "slovakLanguage"
+    | "slovenianLanguage"
+    | "spanishLanguage"
+    | "standardFrenchLanguage"
+    | "standardGermanLanguage"
+    | "germanLanguageReformed1996"
+    | "standardPortugueseLanguage"
+    | "swedishLanguage"
+    | "swissGermanLanguage"
+    | "swissGermanLanguageOldRules"
+    | "turkishLanguage"
+    | "ukenglishLanguage"
+    | "ukranianLanguage"
+    | "arabicLanguage"
+    | "hebrewLanguage"
+    | "bokmalNorwegianLanguage"
+    | "brazilianPortugueseLanguage"
+    | "bulgarianLanguage"
+    | "canadianFrenchLanguage"
+    | "canadianEnglishLanguage"
+    | "catalanLanguage"
+    | "chineseLanguage"
+    | "czechLanguage"
+    | "danishLanguage"
+    | "dutchLanguage"
+    | "kdutchLanguageOldRules"
+    | "englishLanguage"
+    | "estonianLanguage"
+    | "finnishLanguage";
 
   interface JapaneseAlternateEnum {
     _enum: "japaneseAlternate";
     _value: JapaneseAlternate;
   }
 
-  const enum JapaneseAlternate {
-    defaultForm = "defaultForm",
-    traditionalForm = "traditionalForm",
-    expertForm = "expertForm",
-    JIS78Form = "JIS78Form",
-    JIS83Form = "JIS83Form",
-    halfWidthForm = "halfWidthForm",
-    thirdWidthForm = "thirdWidthForm",
-    quarterWidthForm = "quarterWidthForm",
-    fullWidthForm = "fullWidthForm",
-    proportionalWidthForm = "proportionalWidthForm",
-
-    // expertForm?
-    // traditionalForm?
-    // TODO: more?
-  }
+  type JapaneseAlternate =
+    | "defaultForm"
+    | "traditionalForm"
+    | "expertForm"
+    | "JIS78Form"
+    | "JIS83Form"
+    | "halfWidthForm"
+    | "thirdWidthForm"
+    | "quarterWidthForm"
+    | "fullWidthForm"
+    | "proportionalWidthForm";
+  // expertForm?
+  // traditionalForm?
+  // TODO: more?
 
   interface GridAlignmentEnum {
     _enum: "gridAlignment";
     _value: GridAlignment;
   }
 
-  const enum GridAlignment {
-    roman = "roman",
-    bottom = "bottom",
-    ifcbottom = "icfbottom",
-    center = "center",
-    icftop = "icftop",
-    top = "top",
-  }
+  type GridAlignment = "roman" | "bottom" | "icfbottom" | "center" | "icftop" | "top";
 
   interface TextStyleDescriptor {
     _obj: "textStyle";
@@ -276,73 +237,55 @@ declare module "photoshop" {
     _value: AutoKern;
   }
 
-  const enum AutoKern {
-    metricsKern = "metricsKern",
-    opticalKern = "opticalKern",
-    manual = "manual",
-  }
+  type AutoKern = "metricsKern" | "opticalKern" | "manual";
 
   interface DirOverrideEnum {
     _enum: "dirOverride";
     _value: DirOverride;
   }
 
-  const enum DirOverride {
-    dirOverrideDefault = "dirOverrideDefault",
-    dirOverrideLTR = "dirOverrideLTR",
-    dirOverrideRTL = "dirOverrideRTL",
-  }
+  type DirOverride = "dirOverrideDefault" | "dirOverrideLTR" | "dirOverrideRTL";
 
   interface DiacVPosEnum {
     _enum: "diacVPos";
     _value: DiacVPos;
   }
 
-  const enum DiacVPos {
-    diacVPosOpenType = "diacVPosOpenType",
-    diacVPosOff = "diacVPosOff",
-    diacVPosLoose = "diacVPosLoose",
-    diacVPosMedium = "diacVPosMedium",
-    diacVPosTight = "diacVPosTight",
-  }
+  type DiacVPos =
+    | "diacVPosOpenType"
+    | "diacVPosOff"
+    | "diacVPosLoose"
+    | "diacVPosMedium"
+    | "diacVPosTight";
 
   interface WariChuJustificationEnum {
     _enum: "wariChuJustification";
     _value: WariChuJustification;
   }
 
-  const enum WariChuJustification {
-    wariChuAutoJustify = "wariChuAutoJustify",
-    wariChuCenterJustify = "wariChuCenterJustify",
-    wariChuFullJustifyLastLineCenter = "wariChuFullJustifyLastLineCenter",
-    wariChuFullJustifyLastLineFull = "wariChuFullJustifyLastLineFull",
-    wariChuFullJustifyLastLineLeft = "wariChuFullJustifyLastLineLeft",
-    wariChuFullJustifyLastLineRight = "wariChuFullJustifyLastLineRight",
-    wariChuLeftJustify = "wariChuLeftJustify",
-    wariChuRightJustify = "wariChuRightJustify",
-  }
+  type WariChuJustification =
+    | "wariChuAutoJustify"
+    | "wariChuCenterJustify"
+    | "wariChuFullJustifyLastLineCenter"
+    | "wariChuFullJustifyLastLineFull"
+    | "wariChuFullJustifyLastLineLeft"
+    | "wariChuFullJustifyLastLineRight"
+    | "wariChuLeftJustify"
+    | "wariChuRightJustify";
 
   interface LineCapEnum {
     _enum: "lineCap";
     _value: LineCap;
   }
 
-  const enum LineCap {
-    buttCap = "buttCap",
-    roundCap = "roundCap",
-    squareCap = "squareCap",
-  }
+  type LineCap = "buttCap" | "roundCap" | "squareCap";
 
   interface LineJoinEnum {
     _enum: "lineJoin";
     _value: LineJoin;
   }
 
-  const enum LineJoin {
-    miterJoin = "miterJoin",
-    roundJoin = "roundJoin",
-    bevelJoin = "bevelJoin",
-  }
+  type LineJoin = "miterJoin" | "roundJoin" | "bevelJoin";
 
   interface BaseParentTextStyleDescriptor extends TextStyleDescriptor {
     characterRotation: number;
@@ -416,66 +359,48 @@ declare module "photoshop" {
     _value: PathTypeEffect;
   }
 
-  const enum PathTypeEffect {
-    rainbowEffect = "rainbowEffect",
-    // TODO: more?
-  }
+  type PathTypeEffect = "rainbowEffect"; // TODO: more?
 
   interface PathTypeAlignmentEnum {
     _enum: "pathTypeAlignment";
     _value: PathTypeAlignment;
   }
 
-  const enum PathTypeAlignment {
-    baselineAlignment = "baselineAlignment",
-    centerAlignment = "centerAlignment",
-  }
+  type PathTypeAlignment = "baselineAlignment" | "centerAlignment";
 
   interface PathTypeAlignToEnum {
     _enum: "pathTypeAlignTo";
     _value: PathTypeAlignTo;
   }
 
-  const enum PathTypeAlignTo {
-    toPathTop = "toPathTop",
-    toPathBottom = "toPathBottom",
-    toPathCenter = "toPathCenter",
-  }
+  type PathTypeAlignTo = "toPathTop" | "toPathBottom" | "toPathCenter";
 
   interface FramBaselineAlignmentEnum {
     _enum: "frameBaselineAlignment";
     _value: FramBaselineAlignment;
   }
 
-  const enum FramBaselineAlignment {
-    alignByAscent = "alignByAscent",
-    alignByCapHeight = "alignByCapHeight",
-    alignByLeading = "alignByLeading",
-    alignByMinimumValueRoman = "alignByMinimumValueRoman",
-    alignByMinimumValueAsian = "alignByMinimumValueAsian",
-    alignByXHeight = "alignByXHeight",
-  }
+  type FramBaselineAlignment =
+    | "alignByAscent"
+    | "alignByCapHeight"
+    | "alignByLeading"
+    | "alignByMinimumValueRoman"
+    | "alignByMinimumValueAsian"
+    | "alignByXHeight";
 
   interface CharEnum {
     _enum: "char";
     _value: Char;
   }
 
-  const enum Char {
-    box = "box",
-    paint = "paint", // point/paint bug
-  }
+  type Char = "box" | "paint";
 
   interface TextGriddingEnum {
     _enum: "textGridding";
     _value: TextGridding;
   }
 
-  const enum TextGridding {
-    none = "none",
-    round = "round",
-    systemMetrics = "systemMetrics",
-  }
+  type TextGridding = "none" | "round" | "systemMetrics";
 
   interface ParagraphStyleRangeDescriptor extends RangePartial {
     _obj: "paragraphStyleRange";
@@ -508,45 +433,35 @@ declare module "photoshop" {
     _value: Burasagari;
   }
 
-  const enum Burasagari {
-    burasagariNone = "burasagariNone",
-    burasagariStandard = "burasagariStandard",
-    burasagariStrong = "burasagariStrong",
-  }
+  type Burasagari = "burasagariNone" | "burasagariStandard" | "burasagariStrong";
 
   interface KinsokuSetNameEnum {
     _enum: "kinsokuSetName";
     _value: KinsokuSetName;
   }
 
-  const enum KinsokuSetName {
-    None = "None",
-    Hard = "Hard",
-    Soft = "Soft",
-  }
+  type KinsokuSetName = "None" | "Hard" | "Soft";
 
   interface MojiKumiNameEnum {
     _enum: "mojiKumiName";
     _value: MojiKumiName;
   }
 
-  const enum MojiKumiName {
-    Photoshop6MojiKumiNone = "Photoshop6MojiKumiNone",
-    Photoshop6MojiKumiSet1 = "Photoshop6MojiKumiSet1",
-    Photoshop6MojiKumiSet2 = "Photoshop6MojiKumiSet2",
-    Photoshop6MojiKumiSet3 = "Photoshop6MojiKumiSet3",
-    Photoshop6MojiKumiSet4 = "Photoshop6MojiKumiSet4",
-  }
+  type MojiKumiName =
+    | "Photoshop6MojiKumiNone"
+    | "Photoshop6MojiKumiSet1"
+    | "Photoshop6MojiKumiSet2"
+    | "Photoshop6MojiKumiSet3"
+    | "Photoshop6MojiKumiSet4";
 
-  const enum antiAliasType {
-    antiAliasNone = "antiAliasNone",
-    antiAliasSharp = "antiAliasSharp",
-    antiAliasCrisp = "antiAliasCrisp",
-    antiAliasStrong = "antiAliasStrong",
-    antiAliasSmooth = "antiAliasSmooth",
-    antiAliasPlatformLCD = "antiAliasPlatformLCD",
-    antiAliasPlatformGray = "antiAliasPlatformGray",
-  }
+  type antiAliasType =
+    | "antiAliasNone"
+    | "antiAliasSharp"
+    | "antiAliasCrisp"
+    | "antiAliasStrong"
+    | "antiAliasSmooth"
+    | "antiAliasPlatformLCD"
+    | "antiAliasPlatformGray";
 
   interface BoundingBoxDescriptor extends UVTopRightBottomLeft {
     _obj: "boundingBox";

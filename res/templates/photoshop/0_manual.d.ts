@@ -123,14 +123,6 @@ declare module "photoshop" {
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
    */
-  interface Tool {
-    id: string;
-  }
-
-  /**
-   * Incomplete definition.
-   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
-   */
   namespace PsCommon {
     /**
      * Incomplete definition.
@@ -162,7 +154,42 @@ declare module "photoshop" {
 
   /**
    * Incomplete definition.
-   * Contibute at github.com/hansottowirtz/adobe-uxazp-types-crawler
+   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
+   * From https://www.adobe.io/photoshop/uxp/ps_reference/classes/document/
+   * and https://forums.creativeclouddeveloper.com/t/where-to-find-list-of-save-options/2221/15
+   * and https://github.com/bbb999/Types-for-Adobe/blob/master/Photoshop/2015.5/index.d.ts
+   */
+  interface SaveOptions {
+    quality?: number;
+    /**
+     * If true, the alpha channels are saved.
+     */
+     alphaChannels?: boolean;
+
+     /**
+      * If true, the annotations are saved.
+      */
+     annotations?: boolean;
+
+     /**
+      * If true, the color profile is embedded in the document.
+      */
+     embedColorProfile?: boolean;
+
+     /**
+      * If true, the layers are saved.
+      */
+     layers?: boolean;
+
+     /**
+      * If true, spot colors are saved.
+      */
+     spotColors?: boolean;
+  }
+
+  /**
+   * Incomplete definition.
+   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
    */
   export const app: App;
   /**

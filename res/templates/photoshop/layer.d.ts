@@ -1,21 +1,20 @@
 // Manually created by @simonhenke
 declare module "photoshop" {
-  const enum LayerKind {
-    any = 0,
-    pixel = 1,
-    adjustment = 2,
-    text = 3,
-    vector = 4,
-    smartObject = 5,
-    video = 6,
-    group = 7,
-    threeD = 8,
-    gradient = 9,
-    pattern = 10,
-    solidColor = 11,
-    background = 12,
-    groupEnd = 13,
-  }
+  type LayerKind =
+    | 0 // any
+    | 1 // pixel
+    | 2 // adjustment
+    | 3 // text
+    | 4 // vector
+    | 5 // smartObject
+    | 6 // video
+    | 7 // group
+    | 8 // threeD
+    | 9 // gradient
+    | 10 // pattern
+    | 11 // solidColor
+    | 12 // background
+    | 13; // groupEnd
 
   interface LayerDescriptor {
     name: string;
@@ -23,17 +22,19 @@ declare module "photoshop" {
     visible: boolean;
     mode: BlendModeEnum;
     opacity: number;
+    linkedLayerIDs?: number[];
     layerID: number;
     itemIndex: number;
     count: number;
     preserveTransparency: boolean;
     layerFXVisible: boolean;
-    layerEffects: LayerEffectsDescriptor;
+    layerEffects?: LayerEffectsDescriptor;
     globalAngle: number;
     background: boolean;
     layerSection: LayerSectionTypeEnum;
     layerLocking: LayerLockingDescriptor;
     group: boolean;
+    layerSectionExpanded?: boolean;
     targetChannels: ChannelReference[];
     visibleChannels: ChannelReference[];
     channelRestrictions: ChannelEnum[];
@@ -47,6 +48,7 @@ declare module "photoshop" {
     userMaskFeather: number;
     vectorMaskDensity: number;
     vectorMaskFeather: number;
+    boundingBox?: UVRectangleDescriptor<PixelValue>;
     bounds: UVRectangleDescriptor<PixelValue>;
     boundsNoEffects: UVRectangleDescriptor<PixelValue>;
     boundsNoMask: UVRectangleDescriptor<PixelValue>;
@@ -60,7 +62,10 @@ declare module "photoshop" {
     vectorMaskEnabled: boolean;
     vectorMaskEmpty: boolean;
     textWarningLevel: number;
+    textKey?: TextKeyDescriptor;
     parentLayerID: number;
+    layerSVGdata?: string;
+    pathBounds?: PathBoundsDescriptor;
 
     // --- Smart Object Layer
     smartObject?: SmartObjectDescriptor;
@@ -75,16 +80,23 @@ declare module "photoshop" {
     adjustment: Adjustment[];
   }
 
+  interface PathBoundsDescriptor {
+    _obj: "rectangle";
+    pathBounds: FloatRectDescriptor;
+  }
+
+  interface PatternDescriptor {
+    _obj: "pattern";
+    name: string;
+    ID: string; // UUID
+  }
+
   interface LayerSectionTypeEnum {
     _enum: "layerSectionType";
     _value: LayerSectionType;
   }
 
-  const enum LayerSectionType {
-    layerSectionContent = "layerSectionContent",
-    layerSectionStart = "layerSectionStart",
-    layerSectionEnd = "layerSectionEnd",
-  }
+  type LayerSectionType = "layerSectionContent" | "layerSectionStart" | "layerSectionEnd";
 
   interface LayerLockingDescriptor {
     _obj: "layerLocking";
@@ -108,7 +120,7 @@ declare module "photoshop" {
     animationPropagate: boolean;
   }
 
-  interface FloatRectDescriptor extends TopRightBottomleft {
+  interface FloatRectDescriptor extends TopRightBottomLeft {
     _obj: "classFloatRect";
   }
 

@@ -1,10 +1,8 @@
 // Manually created by @simonhenke
 declare module "photoshop" {
   interface SmartObjectMore {
-    /** uuid */
-    ID: string;
-    /** uuid */
-    placed: string;
+    ID: string; // UUID
+    placed: string; // UUID
     pageNumber: number;
     totalPages: number;
     crop: number;
@@ -19,6 +17,7 @@ declare module "photoshop" {
     x: PointDescriptor;
     size: PointDescriptorWidthHeight;
     resolution: DensityValue;
+    filterFX?: FilterFXStyleDescriptor;
     comp: number;
     compInfo: {
       compID: number;
@@ -26,15 +25,24 @@ declare module "photoshop" {
     };
   }
 
+  interface FilterFXStyleDescriptor {
+    _obj: "filterFXStyle";
+    enabled: boolean;
+    validAtPosition: boolean;
+    filterMaskEnable: boolean;
+    filterMaskLinked: boolean;
+    filterMaskExtendWithWhite: boolean;
+    filterFXList: FilterFXDescriptor[];
+    filterMaskDensity: number;
+    filterMaskFeather: number;
+  }
+
   interface PlacedContentTypeEnum {
     _enum: "placed";
     _value: PlacedContentType;
   }
 
-  const enum PlacedContentType {
-    rasterizeContent = "rasterizeContent",
-    vectorData = "vectorData",
-  }
+  type PlacedContentType = "rasterizeContent" | "vectorData";
 
   interface SmartObjectGenericProperties {
     _obj: "smartObject";
@@ -46,22 +54,31 @@ declare module "photoshop" {
     };
     linked: boolean;
     fileReference: string | FileReference;
+    filterFX?: FilterFXDescriptor[];
+  }
+
+  interface FilterFXDescriptor {
+    _obj: "filterFX";
+    backgroundColor: PsColor;
+    blendOptions: BlendOptionsDescriptor;
+    enabled: boolean;
+    filter?: any; // TODO: add Descriptors for all Filter types
+    filterID: number;
+    foregroundColor: PsColor;
+    hasOptions: boolean;
+    name: string;
+  }
+
+  interface BlendOptionsDescriptor {
+    _obj: "blendOptions";
+    mode: BlendModeEnum;
+    opacity: PercentValue;
   }
 
   interface LinkedSmartObjectDescriptor extends SmartObjectGenericProperties {
     link: FileReference;
     linkMissing: boolean;
     linkChanged: boolean;
-  }
-
-  interface FileReference {
-    _path: string;
-    _kind: FileReferenceKind;
-  }
-
-  const enum FileReferenceKind {
-    local = "local",
-    cloud = "cloud",
   }
 
   interface CloudLinkDescriptor {
@@ -79,10 +96,7 @@ declare module "photoshop" {
     _value: AdobeStockLiceneseState;
   }
 
-  const enum AdobeStockLiceneseState {
-    licensed = "licensed",
-    unlicensed = "unlicensed",
-  }
+  type AdobeStockLiceneseState = "licensed" | "unlicensed";
 
   type SmartObjectDescriptor = SmartObjectGenericProperties | LinkedSmartObjectDescriptor;
 }

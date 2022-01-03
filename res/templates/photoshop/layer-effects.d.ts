@@ -1,6 +1,7 @@
 // Manually created by @simonhenke
 declare module "photoshop" {
   interface LayerEffectsDescriptor {
+    _obj?: "layerEffects";
     scale: PercentValue;
     dropShadow?: DropShadowDescriptor;
     dropShadowMulti?: DropShadowDescriptor[];
@@ -43,34 +44,26 @@ declare module "photoshop" {
     _value: BevelTechnique;
   }
 
-  const enum BevelTechnique {
-    softMatte = "softMatte",
-    preciseMatte = "preciseMatte",
-    slopeLimitMatte = "slopeLimitMatte",
-  }
+  type BevelTechnique = "softMatte" | "preciseMatte" | "slopeLimitMatte";
 
   interface BevelEmbossStyleEnum {
     _enum: "bevelEmbossStyle";
     _value: BevelEmbossStyle;
   }
 
-  const enum BevelEmbossStyle {
-    innerBevel = "innerBevel",
-    outerBevel = "outerBevel",
-    emboss = "emboss",
-    pillowEmboss = "pillowEmboss",
-    strokeEmboss = "strokeEmboss",
-  }
+  type BevelEmbossStyle =
+    | "innerBevel"
+    | "outerBevel"
+    | "emboss"
+    | "pillowEmboss"
+    | "strokeEmboss";
 
   interface BevelEmbossStampStyleEnum {
     _enum: "bevelEmbossStampStyle";
     _value: BevelEmbossStampStyle;
   }
 
-  const enum BevelEmbossStampStyle {
-    stampOut = "stampOut",
-    in = "in",
-  }
+  type BevelEmbossStampStyle = "stampOut" | "in";
 
   interface BevelEmbossDescriptor {
     _obj: "bevelEmboss";
@@ -128,25 +121,22 @@ declare module "photoshop" {
     _value: InnerGlowSourceType;
   }
 
-  const enum InnerGlowSourceType {
-    edgeGlow = "edgeGlow",
-    centerGlow = "centerGlow",
-  }
+  type InnerGlowSourceType = "edgeGlow" | "centerGlow";
 
   interface FrameFXSolidFillDescriptor extends FrameFXDescriptorBase {
-    paintType: FrameFillEnum<FrameFill.solidFill>;
+    paintType: FrameFillEnum<"solidFill">;
   }
 
   interface FrameFXGradientFillDescriptor
     extends FrameFXDescriptorBase,
       GradientFillProperties {
-    paintType: FrameFillEnum<FrameFill.gradientFill>;
+    paintType: FrameFillEnum<"gradientFill">;
   }
 
   interface FrameFXPatternFillDescriptor
     extends FrameFXDescriptorBase,
       PatternFillProperties {
-    paintType: FrameFillEnum<FrameFill.pattern>;
+    paintType: FrameFillEnum<"pattern">;
   }
 
   interface FrameFillEnum<FF extends FrameFill = FrameFill> {
@@ -154,22 +144,14 @@ declare module "photoshop" {
     _value: FF;
   }
 
-  const enum FrameFill {
-    solidFill = "solidFill",
-    gradientFill = "gradientFill",
-    pattern = "pattern",
-  }
+  type FrameFill = "solidFill" | "gradientFill" | "pattern";
 
   interface FrameStyleEnum {
     _enum: "frameStyle";
     _value: FrameStyle;
   }
 
-  const enum FrameStyle {
-    insetFrame = "insetFrame",
-    outsetFrame = "outsetFrame",
-    centeredFrame = "centeredFrame",
-  }
+  type FrameStyle = "insetFrame" | "outsetFrame" | "centeredFrame";
 
   type FrameFXDescriptor =
     | FrameFXSolidFillDescriptor
@@ -183,12 +165,6 @@ declare module "photoshop" {
     overprint: boolean;
     size: PixelValue;
     color: PsColor;
-  }
-
-  interface PatternDescriptor {
-    _obj: "pattern";
-    name: string;
-    ID: string; // UUID
   }
 
   interface PatternFillProperties {
@@ -268,10 +244,7 @@ declare module "photoshop" {
     _value: MatteTechnique;
   }
 
-  const enum MatteTechnique {
-    softMatte = "softMatte",
-    preciseMatte = "preciseMatte",
-  }
+  type MatteTechnique = "softMatte" | "preciseMatte";
 
   interface ShapeCurveTypeDescriptor {
     _obj: "shapeCurveType";
@@ -279,20 +252,19 @@ declare module "photoshop" {
     curve?: CurvePointDescriptor[];
   }
 
-  const enum ShapeCurveName {
-    Linear = "Linear",
-    Cone = "$$$/Contours/Defaults/Cone=Cone",
-    ConeInverted = "$$$/Contours/Defaults/ConeInverted=Cone - Inverted",
-    CoveDeep = "$$$/Contours/Defaults/CoveDeep=Cove - Deep",
-    CoveShallow = "$$$/Contours/Defaults/CoveShallow=Cove - Shallow",
-    Gaussian = "$$$/Contours/Defaults/Gaussian=Gaussian",
-    HalfRound = "$$$/Contours/Defaults/HalfRound=Half Round",
-    Ring = "$$$/Contours/Defaults/Ring=Ring",
-    RingDouble = "$$$/Contours/Defaults/DoubleRing=Ring - Double",
-    RollingSlopeDescending = "$$$/Contours/Defaults/RollingSlopeDescending=Rolling Slope - Descending",
-    RoundedSteps = "$$$/Contours/Defaults/RoundedSteps=Rounded Steps",
-    SawTooth1 = "$$$/Contours/Defaults/Sawtooth1=Sawtooth 1",
-  }
+  type ShapeCurveName =
+    | "Linear"
+    | "$$$/Contours/Defaults/Cone=Cone"
+    | "$$$/Contours/Defaults/ConeInverted=Cone - Inverted"
+    | "$$$/Contours/Defaults/CoveDeep=Cove - Deep"
+    | "$$$/Contours/Defaults/CoveShallow=Cove - Shallow"
+    | "$$$/Contours/Defaults/Gaussian=Gaussian"
+    | "$$$/Contours/Defaults/HalfRound=Half Round"
+    | "$$$/Contours/Defaults/Ring=Ring"
+    | "$$$/Contours/Defaults/DoubleRing=Ring - Double"
+    | "$$$/Contours/Defaults/RollingSlopeDescending=Rolling Slope - Descending"
+    | "$$$/Contours/Defaults/RoundedSteps=Rounded Steps"
+    | "$$$/Contours/Defaults/Sawtooth1=Sawtooth 1";
 
   interface CurvePointDescriptor {
     _obj: "curvePoint";

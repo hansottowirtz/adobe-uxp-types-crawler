@@ -28,38 +28,13 @@ declare module "photoshop" {
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
    */
-  type LayerTypes = GroupLayer | Layer;
+  type LayerTypes = Layer;
 
   /**
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
    */
   type SaveDialogOptions = any;
-
-  /**
-   * Incomplete definition.
-   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
-   */
-  type CreateOptions = Partial<Layer>;
-
-  /**
-   * Incomplete definition.
-   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
-   */
-  type LayerCreateOptions = CreateOptions;
-
-  /**
-   * Incomplete definition.
-   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
-   */
-  type GroupLayerCreateOptions = CreateOptions;
-
-  /**
-   * Incomplete definition.
-   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
-   * From https://github.com/AdobeDocs/uxp-photoshop/blob/a0aa32139d/src/pages/ps_reference/media/advanced/batchplay.md
-   */
-  type DocumentCreateOptions = Partial<Document>;
 
   /**
    * Incomplete definition.
@@ -107,10 +82,6 @@ declare module "photoshop" {
     [key: string]: any;
   }
 
-  interface Layer {
-    name: string;
-  }
-
   /**
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
@@ -129,12 +100,31 @@ declare module "photoshop" {
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
    */
-  namespace PsCommon {
-    /**
-     * Incomplete definition.
-     * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
-     */
-    type Bounds = Rectangle;
+  interface Rectangle {
+    bottom: number;
+    left: number;
+    right: number;
+    top: number;
+  }
+
+  /**
+   * Incomplete definition.
+   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
+   * From https://www.adobe.io/photoshop/uxp/2022/ps_reference/objects/bounds/
+   */
+  interface Bounds extends Rectangle {
+    typename?: "Bounds";
+    readonly height: number;
+    readonly width: number;
+  }
+
+  /**
+   * Incomplete definition.
+   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
+   * From https://www.adobe.io/photoshop/uxp/2022/ps_reference/classes/document/
+   */
+  interface SuspendHistoryContext {
+    document: Document;
   }
 
   /**
@@ -153,7 +143,7 @@ declare module "photoshop" {
    * From https://www.adobe.io/photoshop/uxp/ps_reference/media/advanced/cpp-pluginsdk/
    */
   interface PhotoshopMessaging {
-    sendSDKPluginMessage(id: string, content: {[key: string]: any}): any;
+    sendSDKPluginMessage(id: string, content: { [key: string]: any }): any;
     addSDKMessagingListener(cb: (...args: any[]) => any): void;
     removeSDKMessagingListener(cb: (...args: any[]) => any): void;
   }
@@ -170,29 +160,30 @@ declare module "photoshop" {
     /**
      * If true, the alpha channels are saved.
      */
-     alphaChannels?: boolean;
+    alphaChannels?: boolean;
 
-     /**
-      * If true, the annotations are saved.
-      */
-     annotations?: boolean;
+    /**
+     * If true, the annotations are saved.
+     */
+    annotations?: boolean;
 
-     /**
-      * If true, the color profile is embedded in the document.
-      */
-     embedColorProfile?: boolean;
+    /**
+     * If true, the color profile is embedded in the document.
+     */
+    embedColorProfile?: boolean;
 
-     /**
-      * If true, the layers are saved.
-      */
-     layers?: boolean;
+    /**
+     * If true, the layers are saved.
+     */
+    layers?: boolean;
 
-     /**
-      * If true, spot colors are saved.
-      */
-     spotColors?: boolean;
+    /**
+     * If true, spot colors are saved.
+     */
+    spotColors?: boolean;
   }
 
+  type App = Photoshop;
 
   interface PhotoshopCore {
     /**
@@ -210,6 +201,17 @@ declare module "photoshop" {
      * From https://forums.creativeclouddeveloper.com/t/official-uxp-types-questions/3893
      */
     validateReference: (refs: Reference | Reference[]) => boolean;
+  }
+
+  interface Document {
+    readonly saveAs: {
+      readonly bmp: (entry: File, saveOptions?: BMPSaveOptions, asCopy?: boolean) => Promise<void>;
+      readonly gif: (entry: File, saveOptions?: GIFSaveOptions, asCopy?: boolean) => Promise<void>;
+      readonly jpg: (entry: File, saveOptions?: JPEGSaveOptions, asCopy?: boolean) => Promise<void>;
+      readonly png: (entry: File, saveOptions?: PNGSaveOptions, asCopy?: boolean) => Promise<void>;
+      readonly psb: (entry: File, saveOptions?: PhotoshopSaveOptions, asCopy?: boolean) => Promise<void>;
+      readonly psd: (entry: File, saveOptions?: PhotoshopSaveOptions, asCopy?: boolean) => Promise<void>;
+    };
   }
 
   /**

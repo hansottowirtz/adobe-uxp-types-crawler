@@ -3,15 +3,224 @@
   "entrypoints": [
     {
       "type": "index",
-      "url": "/photoshop/uxp/ps_reference/classes",
-      // This object extends `urlInterfaceConfig` for all interfaces in this index
+      "url": "/photoshop/uxp/2022/ps_reference/colors",
       "interfaceConfig": {
         "partOfModule": "photoshop"
       }
     },
     {
       "type": "interface",
-      "url": "/photoshop/uxp/ps_reference/interfaces/batchplaycommandoptions",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/action",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/actionset",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/channel",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/channels",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/document",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/documents",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/guide",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/guides",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/historystate",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/historystates",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/layer",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/layers",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/photoshop",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/textfont",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/textfonts",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/classes/solidcolor",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    // {
+    //   "type": "interface",
+    //   "url": "/photoshop/uxp/2022/ps_reference/objects/bounds",
+    //   "interfaceConfig": {
+    //     "partOfModule": "photoshop"
+    //   }
+    // },
+    // {
+    //   "type": "interface",
+    //   "url": "/photoshop/uxp/2022/ps_reference/objects/tool",
+    //   "interfaceConfig": {
+    //     "partOfModule": "photoshop"
+    //   }
+    // },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/saveoptions/bmpsaveoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/saveoptions/gifsaveoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/saveoptions/jpegsaveoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/saveoptions/jpegsaveoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/saveoptions/pngsaveoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/saveoptions/photoshopsaveoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/createoptions/documentcreateoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/createoptions/grouplayercreateoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/createoptions/layercreateoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/conversionoptions/bitmapconversionoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/conversionoptions/indexedconversionoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/objects/conversionoptions/bitmapconversionoptions",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/interfaces/batchplaycommandoptions",
       "interfaceConfig": {
         "partOfModule": "photoshop"
       }
@@ -74,14 +283,21 @@
     },
     {
       "type": "interface",
-      "url": "/photoshop/uxp/ps_reference/modules/photoshopaction",
+      "url": "/photoshop/uxp/2022/ps_reference/media/photoshopaction",
       "interfaceConfig": {
         "partOfModule": "photoshop"
       }
     },
     {
       "type": "interface",
-      "url": "/photoshop/uxp/ps_reference/modules/photoshopcore",
+      "url": "/photoshop/uxp/2022/ps_reference/media/photoshopcore",
+      "interfaceConfig": {
+        "partOfModule": "photoshop"
+      }
+    },
+    {
+      "type": "interface",
+      "url": "/photoshop/uxp/2022/ps_reference/interfaces/executeasmodaloptions",
       "interfaceConfig": {
         "partOfModule": "photoshop"
       }
@@ -93,19 +309,10 @@
   ],
   // The interface names are not visible on the Adobe documentation, so we override them here
   "urlInterfaceConfig": {
-    "/photoshop/uxp/ps_reference/classes/photoshop": {
-      "interfaceName": "App"
-    },
-    "/photoshop/uxp/ps_reference/classes/grouplayer": {
-      "interfaceName": "GroupLayer"
-    },
-    "/photoshop/uxp/ps_reference/classes/actionset": {
-      "interfaceName": "ActionSet"
-    },
-    "/photoshop/uxp/ps_reference/modules/photoshopaction": {
+    "/photoshop/uxp/2022/ps_reference/media/photoshopaction": {
       "interfaceName": "PhotoshopAction"
     },
-    "/photoshop/uxp/ps_reference/modules/photoshopcore": {
+    "/photoshop/uxp/2022/ps_reference/media/photoshopcore": {
       "interfaceName": "PhotoshopCore"
     }
     // "/photoshop/uxp/uxp/reference-js/Modules/os/OS": {
@@ -123,12 +330,6 @@
       "path": ["photoshop"],
       "config": {
         "prependTemplates": ["photoshop/*.d.ts"]
-      }
-    },
-    {
-      "path": ["photoshop", "GroupLayer"],
-      "config": {
-        "extendsInterfaces": ["Layer"]
       }
     },
     {
@@ -159,7 +360,7 @@
       }
     },
     {
-      "path": ["photoshop", "App", "batchPlay"],
+      "path": ["photoshop", "Photoshop", "batchPlay"],
       "config": {
         "paramsTypes": {
           "commands": {
@@ -173,6 +374,48 @@
             "optional": true
           }
         }
+      }
+    },
+    {
+      "path": ["photoshop", "Document", "saveAs"],
+      "config": {
+        "ignore": true
+      }
+    },
+    {
+      "path": ["photoshop", "Document", "bmp"],
+      "config": {
+        "ignore": true
+      }
+    },
+    {
+      "path": ["photoshop", "Document", "gif"],
+      "config": {
+        "ignore": true
+      }
+    },
+    {
+      "path": ["photoshop", "Document", "jpg"],
+      "config": {
+        "ignore": true
+      }
+    },
+    {
+      "path": ["photoshop", "Document", "png"],
+      "config": {
+        "ignore": true
+      }
+    },
+    {
+      "path": ["photoshop", "Document", "psb"],
+      "config": {
+        "ignore": true
+      }
+    },
+    {
+      "path": ["photoshop", "Document", "psd"],
+      "config": {
+        "ignore": true
       }
     }
   ]

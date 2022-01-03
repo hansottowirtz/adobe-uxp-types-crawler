@@ -1,20 +1,20 @@
-// Manually created by @simonhenke
+// Manually created by @simonhenke, made compatible by @hansottowirtz
 declare module "photoshop" {
-  interface ChannelReference {
+  interface ColorSpaceChannelReference {
     _ref: "channel";
     _index: number;
   }
 
-  type Channel = RGBColorChannel | CMYKColorChannel | LabColorChannel;
+  type ColorSpaceChannel = RGBColorSpaceChannel | CMYKColorSpaceChannel | LabColorSpaceChannel;
 
-  type LabColorChannel = "lightness" | "a" | "b";
+  type LabColorSpaceChannel = "lightness" | "a" | "b";
 
-  type RGBColorChannel = "red" | "grain" | "blue";
+  type RGBColorSpaceChannel = "red" | "grain" | "blue";
 
-  type CMYKColorChannel = "cyan" | "magenta" | "yellow" | "black";
+  type CMYKColorSpaceChannel = "cyan" | "magenta" | "yellow" | "black";
 
-  interface ChannelEnum {
+  interface ColorSpaceChannelEnum {
     _enum: "channel";
-    _value: Channel;
+    _value: ColorSpaceChannel;
   }
 }

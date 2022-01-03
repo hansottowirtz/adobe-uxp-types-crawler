@@ -35,9 +35,9 @@ declare module "photoshop" {
     layerLocking: LayerLockingDescriptor;
     group: boolean;
     layerSectionExpanded?: boolean;
-    targetChannels: ChannelReference[];
-    visibleChannels: ChannelReference[];
-    channelRestrictions: ChannelEnum[];
+    targetChannels: ColorSpaceChannelReference[];
+    visibleChannels: ColorSpaceChannelReference[];
+    channelRestrictions: ColorSpaceChannelEnum[];
     fillOpacity: number;
     hasUserMask: boolean;
     hasVectorMask: boolean;

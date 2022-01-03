@@ -1,6 +1,6 @@
 # Adobe UXP Types Crawler
 
-Currently includes types for Adobe Photoshop.
+Currently includes types for Adobe Photoshop and UXP.
 
 This project crawls the Adobe UXP documentation and generates Typescript declaration files.
 
@@ -8,14 +8,15 @@ This project crawls the Adobe UXP documentation and generates Typescript declara
 
 ```bash
 npm i -D adobe-uxp-types-photoshop
+npm i -D adobe-uxp-types-uxp
 ```
 
 ```jsonc
 // tsconfig.json
 {
   "compilerOptions": {
-    "typeRoots": ["node_modules/@types", "node_modules/adobe-uxp-types-photoshop"],
-    "types": ["adobe-uxp-types-photoshop", /* other types */] // this field is optional
+    "typeRoots": ["node_modules/@types", "node_modules/adobe-uxp-types-photoshop", "node_modules/adobe-uxp-types-uxp"],
+    "types": ["adobe-uxp-types-photoshop", "adobe-uxp-types-uxp", /* other types */] // this field is optional
   }
 }
 ```
@@ -26,7 +27,7 @@ npm i -D adobe-uxp-types-photoshop
 
 ## Intro
 
-_Currently only includes types for Photoshop_
+_Currently only includes types for Photoshop and UXP_
 
 This project is a quickly hacked together Typescript .d.ts generator for Adobe UXP (for Photoshop).
 It uses Puppeteer to crawl https://www.adobe.io/photoshop/uxp/ps_reference/ and subpages, and `dts-dom` to
@@ -66,3 +67,4 @@ npx lerna publish from-package
 This project started from [AdobeXD/typings](https://github.com/AdobeXD/typings/issues/28), which did not include types for Photoshop.
 Descriptor enums and interfaces were taken from [simonhenke/photoshop-types](https://github.com/simonhenke/photoshop-types).Other types were taken from [@types/photoshop](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/photoshop).
 A missing interface was taken from [bbb999/Types-For-Adobe](https://github.com/bbb999/Types-for-Adobe/blob/master/Photoshop/2015.5/index.d.ts).
+The common UXP typings were taken from [thejustinwalsh/uxp-types](https://github.com/thejustinwalsh/uxp-types).

@@ -1,0 +1,8 @@
+{
+  "name": "adobe-uxp-types-uxp",
+  "version": "0.0.7-beta.0",
+  "types": "./uxp.d.ts",
+  "files": [
+    "uxp.d.ts"
+  ]
+}

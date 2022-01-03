@@ -1,0 +1,4 @@
+{
+  // to avoid type collisions, create a new root by creating this file
+  "compilerOptions": {}
+}

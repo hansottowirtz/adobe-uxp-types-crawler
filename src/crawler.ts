@@ -289,7 +289,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
             definitions: [],
           };
           attrs[part as keyof AttrList].push(currAttr);
-        } else if (is2022 && part === "properties" && child.matches("table")) {
+        } else if (is2022 && part === "properties" && child.matches("table") && !child.previousSibling.textContent.includes('Type declaration')) {
           const objects = tableToObjects(child);
           for (const obj of objects) {
             if (!obj.name.replace('-', '').trim() || !obj.type.replace('-', '').trim() || obj.name.includes('..')) continue;
@@ -524,9 +524,9 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
               flags: isOptional ? DeclarationFlags.Optional : DeclarationFlags.None,
             });
           } else {
-            const isOptional = rawParam.name.endsWith("?");
             const paramName = rawParam.name.replace(/\?$/, "");
             const paramType = attrOverrides?.config?.paramsTypes?.[paramName] || rawParam.type;
+            const isOptional = attrOverrides?.config?.paramsFlags?.[paramName]?.optional || rawParam.name.endsWith("?");
             const dParam: Parameter = {
               name: paramName,
               type: paramType as any,

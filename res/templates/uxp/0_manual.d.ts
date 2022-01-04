@@ -2,7 +2,7 @@
 // From https://github.com/thejustinwalsh/uxp-types
 declare module "uxp" {
   namespace dialog {
-    function showOpenDialog(options: {
+    function showOpenDialog(options?: {
       openFile?: boolean;
       openDirectory?: boolean;
       defaultPath?: string;
@@ -14,7 +14,7 @@ declare module "uxp" {
       initialLocation?: string;
     }): Promise<URL>;
 
-    function showSaveDialog(options: {
+    function showSaveDialog(options?: {
       defaultPath?: string;
       title?: string;
       buttonLabel?: string;
@@ -117,14 +117,14 @@ declare module "uxp" {
 
       copyTo: (
         folder: Folder,
-        options: {
+        options?: {
           overwrite?: boolean;
         }
       ) => void;
 
       moveTo: (
         folder: Folder,
-        options: {
+        options?: {
           overwrite?: boolean;
           newName?: string;
         }
@@ -150,11 +150,11 @@ declare module "uxp" {
 
       mode: ModeSymbol;
 
-      read: (options: { format?: FormatSymbol }) => Promise<string | ArrayBuffer>;
+      read: (options?: { format?: FormatSymbol }) => Promise<string | ArrayBuffer>;
 
       write: (
         data: string | ArrayBuffer,
-        options: { format?: FormatSymbol; append?: boolean }
+        options?: { format?: FormatSymbol; append?: boolean }
       ) => void;
     }
 
@@ -167,7 +167,7 @@ declare module "uxp" {
 
       createEntry: (
         name: string,
-        options: {
+        options?: {
           type?: TypeSymbol;
           overwrite?: boolean;
         }
@@ -175,7 +175,7 @@ declare module "uxp" {
 
       createFile: (
         name: string,
-        options: {
+        options?: {
           overwrite?: boolean;
         }
       ) => Promise<File>;
@@ -200,7 +200,7 @@ declare module "uxp" {
 
       supportedDomains: DomainSymbol[];
 
-      getFileForOpening: (options: {
+      getFileForOpening: (options?: {
         initialDomain?: DomainSymbol;
         types?: string[];
         initialLocation?: File | Folder;
@@ -209,13 +209,13 @@ declare module "uxp" {
 
       getFileForSaving: (
         name: string,
-        options: {
+        options?: {
           initialDomain?: DomainSymbol;
           types?: string[];
         }
       ) => Promise<File>;
 
-      getFolder: (options: { initialDomain?: DomainSymbol }) => Promise<Folder>;
+      getFolder: (options?: { initialDomain?: DomainSymbol }) => Promise<Folder>;
 
       getTemporaryFolder: () => Promise<Folder>;
 

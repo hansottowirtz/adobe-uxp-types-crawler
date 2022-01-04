@@ -1,4 +1,4 @@
-/// <reference path="./uxp.d.ts"/>
+/// <reference types="."/>
 
 import * as uxp from "uxp";
 import { expectType } from "tsd";

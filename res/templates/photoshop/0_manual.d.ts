@@ -1,3 +1,4 @@
+/// <reference types="../uxp" />
 // Manually created by @hansottowirtz
 declare module "photoshop" {
   /**
@@ -202,6 +203,8 @@ declare module "photoshop" {
      */
     validateReference: (refs: Reference | Reference[]) => boolean;
   }
+
+  type File = import("uxp").storage.File;
 
   interface Document {
     readonly saveAs: {

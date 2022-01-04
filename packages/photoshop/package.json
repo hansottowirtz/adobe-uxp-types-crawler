@@ -1,6 +1,6 @@
 {
   "name": "@adobe-uxp-types/photoshop",
-  "version": "0.0.7-beta.2",
+  "version": "0.0.7-beta.3",
   "types": "./photoshop.d.ts",
   "files": [
     "photoshop.d.ts"
@@ -8,5 +8,8 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@adobe-uxp-types/uxp": "^0.0.7-beta.3"
   }
 }

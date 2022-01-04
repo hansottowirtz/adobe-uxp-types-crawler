@@ -53,7 +53,12 @@ npx ts-node src/index.ts --entrypoints res/entrypoints.jsonc --templates-path re
 ```
 
 Bumping package versions:
-Edit version in `lerna.json` and `packages/photoshop/package.json`.
+
+```
+npx lerna version <version> --no-git-tag-version
+```
+
+Then commit. Git tags are added by Github Actions.
 
 __Publishing to npm is currently done in Github Actions.__, based on the Lerna version. See `.github/workflows/build-and-publish.yml`.
 

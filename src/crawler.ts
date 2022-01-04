@@ -434,9 +434,12 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
       const access = attr.definitions.find((def) => def.access)?.access;
       let isReadonly = access ? access === 'read-only' : null;
       if (isReadonly === null) {
-        isReadonly = attr.definitions.some((def) => def.raw.startsWith("set"));
+        const hasSetter = attr.definitions.some((def) => def.raw.startsWith("set "));
+        const hasGetter = attr.definitions.some((def) => def.raw.startsWith("get "));
+        if (hasSetter && !hasGetter) isReadonly = true;
       }
       const def0 = attr.definitions[0];
+      const isOptional = def0.raw.includes("?") || def0.raw.startsWith("Optional ") || interfaceName.endsWith("Options");
 
       // raw can be getter or setter, optional or normal
       const attrName = def0.raw.replace(/^(get|set|Optional|Readonly|Let) /, "").split(/(\(|\?|\:)/)[0];
@@ -450,7 +453,7 @@ export const crawl = async (entrypoints: Entrypoints, opts: { cachePath: string 
 
       let flags = DeclarationFlags.None;
       if (isReadonly) flags = flags | DeclarationFlags.ReadOnly;
-      if (def0.raw.includes("?") || def0.raw.startsWith("Optional ")) flags = flags | DeclarationFlags.Optional;
+      if (isOptional) flags = flags | DeclarationFlags.Optional;
 
       const dAttr = dts.create.property(attrName, returnType, flags);
       dAttr.jsDocComment = generateJsdoc(def0);

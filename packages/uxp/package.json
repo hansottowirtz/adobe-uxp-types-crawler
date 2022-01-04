@@ -1,6 +1,6 @@
 {
   "name": "@adobe-uxp-types/uxp",
-  "version": "0.0.7-beta.3",
+  "version": "0.0.7",
   "types": "./uxp.d.ts",
   "files": [
     "uxp.d.ts"

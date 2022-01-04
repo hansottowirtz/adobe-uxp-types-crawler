@@ -46,8 +46,8 @@ declare module "photoshop" {
   }
 
   interface ColorSpaceModeEnum {
-    _enum: 'colorSpace'
-    _value: ColorSpaceMode
+    _enum: "colorSpace";
+    _value: ColorSpaceMode;
   }
 
   type ColorSpaceMode =
@@ -59,7 +59,9 @@ declare module "photoshop" {
     | "CMYKColorEnum"
     | "labColor"
     | "multichannel"
-    | "useICCProfile";
+    | "useICCProfile"
+    | "HSBColorEnum"
+    | "noColor";
 
   interface LabColorSpace extends ColorSpace {
     _obj: "labColor";

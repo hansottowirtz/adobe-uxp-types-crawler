@@ -1,119 +1,113 @@
-// Manually created by Adobe, edited by @hansottowirtz
+// Manually created by Adobe, edited and converted to type unions by @hansottowirtz
 // From https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/photoshop
 declare module "photoshop" {
   /**
    * The method to use for image interpolation
    */
-  enum ResampleMethodConsts {
+  type ResampleMethodConsts =
     /**
      * Choose best option automatically
      */
-    AUTOMATIC = "bicubicAutomatic",
+    | "bicubicAutomatic"
     /**
      * Bicubic interpolation
      */
-    BICUBIC = "bicubic",
+    | "bicubic"
     /**
      * Apply a sharpening mask
      */
-    BICUBICSHARPER = "bicubicSharper",
+    | "bicubicSharper"
     /**
      * Apply a smoothing mask
      */
-    BICUBICSMOOTHER = "bicubicSmoother",
+    | "bicubicSmoother"
     /**
      * Bilinear interpolate
      */
-    BILINEAR = "bilinear",
+    | "bilinear"
     /**
      * Determine value based on nearest neighbor
      */
-    NEARESTNEIGHBOR = "nearestNeighbor",
+    | "nearestNeighbor"
     /**
      * Duplicates pixels
      */
-    NONE = "none",
+    | "none"
     /**
      * Attempt to preserve details by using machine learning
      */
-    PRESERVEDETAILS = "preserveDetailsUpscale",
+    | "preserveDetailsUpscale"
     /**
      * Using deep learning, predict what the picture will look like larger
      */
-    DEEPUPSCALE = "deepUpscale",
-  }
-  enum SaveMethodConsts {
+    | "deepUpscale";
+
+  type SaveMethodConsts =
     /**
      * Saves the current document at the current format
      */
-    SAVE = "save",
+    | "save"
     /**
      * Changes the format of document, changing the file
      */
-    SAVEAS = "saveAs",
+    | "saveAs"
     /**
      * Creates a copy of the document in the new format
      */
-    SAVEASCOPY = "saveAsCopy",
-  }
+    | "saveAsCopy";
+
   /** The policy for closing a document */
-  enum SaveOptionsConsts {
+  type SaveOptionsConsts =
     /**
      * Will close document without saving, discarding changes
      */
-    DONOTSAVECHANGES = 0,
+    | 0
     /**
      * Will ask the user if they'd like to save changes, blocking the script
      */
-    PROMPTTOSAVECHANGES = 1,
+    | 1
     /**
      * Will save all existing changes before closing, prompting if document is not saved yet
      */
-    SAVECHANGES = 2,
-  }
+    | 2;
+
   /**
    * Number of bits per channel (also called pixel depth or color depth).
    *
    * The number selected indicates the exponent of 2.
    */
-  const enum BMPDepthTypeConsts {
-    ONE = "bitDepth1",
-    FOUR = "bitDepth4",
-    EIGHT = "bitDepth8",
-    SIXTEEN = "bitDepth16",
-    TWENTYFOUR = "bitDepth24",
-    THIRTYTWO = "bitDepth32",
-  }
+  type BMPDepthTypeConsts =
+    | "bitDepth1"
+    | "bitDepth4"
+    | "bitDepth8"
+    | "bitDepth16"
+    | "bitDepth24"
+    | "bitDepth32";
+
   /**
    * The number of bits per color channel.
    */
-  const enum BitsPerChannelTypeConsts {
-    ONE = "bitDepth1",
-    EIGHT = "bitDepth8",
-    SIXTEEN = "bitDepth16",
-    THIRTYTWO = "bitDepth32",
-  }
-  const enum OperatingSystemConsts {
-    WINDOWS = "windows",
-    OS2 = "OS2",
-  }
+  type BitsPerChannelTypeConsts = "bitDepth1" | "bitDepth8" | "bitDepth16" | "bitDepth32";
+
+  type OperatingSystemConsts = "windows" | "OS2";
+
   /**
    * The option with which to save a JPEG file.
    */
-  const enum JPEGFormatOptionsConsts {
+  type JPEGFormatOptionsConsts =
     /**
      * Format recognized by most web browsers.
      */
-    STANDARDBASELINE = "standardbaseline",
+    | "standardbaseline"
     /**
      * Displays a series of increasing detailed scans as the image downloads.
      */
-    PROGRESSIVE = "progressive",
+    | "progressive"
     /**
      * Optimized color and a slightly reduced file size.
      */
-    OPTIMIZEDBASELINE = "optimizedbaseline",
-  }
+    | "optimizedbaseline";
+
   /**
    * The color to use to fill anti-aliased edges
    * adjacent to transparent areas of the image.
@@ -122,355 +116,329 @@ declare module "photoshop" {
    *
    * @extendscript MatteType
    */
-  const enum MatteColorConsts {
-    BACKGROUND = "backgroundColor",
-    BLACK = "black",
-    FOREGROUND = "foregroundColor",
-    NETSCAPE = "netscapeGray",
-    SEMIGRAY = "gray50",
-    WHITE = "white",
-  }
+  type MatteColorConsts =
+    | "backgroundColor"
+    | "black"
+    | "foregroundColor"
+    | "netscapeGray"
+    | "gray50"
+    | "white";
+
   /**
    * The type of dithering
    */
-  const enum DitherConsts {
-    DIFFUSION = "diffusion",
-    PATTERN = "pattern",
-    NOISE = "blue",
-    NONE = "none",
-  }
+  type DitherConsts = "diffusion" | "pattern" | "blue" | "none";
+
   /**
    * The type of colors to be included the color
    * table regardless of their usage
    */
-  const enum ForcedColorsConsts {
+  type ForcedColorsConsts =
     /** None */
-    NONE = "none",
+    | "none"
     /** Pure black and pure white */
-    BLACKANDWHITE = "blackAndWhite",
+    | "blackAndWhite"
     /**
      * Red, green, blue, cyan, magenta, yellow, black, and white.
      */
-    PRIMARIES = "primaries",
+    | "primaries"
     /**
      * The 216 web-safe colors
      */
-    WEB = "web",
-  }
+    | "web";
+
   /**
    * The palette type to use
    */
-  const enum PaletteConsts {
-    EXACT = "exact",
-    MACOSPALETTE = "macintoshSystem",
-    WINDOWSPALETTE = "windowsSystem",
-    WEBPALETTE = "web",
-    UNIFORM = "uniform",
-    LOCALPERCEPTUAL = "perceptual",
-    LOCALSELECTIVE = "selective",
-    LOCALADAPTIVE = "adaptive",
-    MASTERPERCEPTUAL = "masterPerceptual",
-    MASTERSELECTIVE = "masterSelective",
-    MASTERADAPTIVE = "masterAdaptive",
-    PREVIOUSPALETTE = "previous",
-  }
+  type PaletteConsts =
+    | "exact"
+    | "macintoshSystem"
+    | "windowsSystem"
+    | "web"
+    | "uniform"
+    | "perceptual"
+    | "selective"
+    | "adaptive"
+    | "masterPerceptual"
+    | "masterSelective"
+    | "masterAdaptive"
+    | "previous";
+
   /**
    * Compression method for saving a PNG file
    */
-  const enum PNGMethodConsts {
-    QUICK = "quick",
-    MODERATE = "moderate",
-    THOROUGH = "thorough",
-  }
+  type PNGMethodConsts = "quick" | "moderate" | "thorough";
+
   /**
    * The point around which to transform an object.
    *
    * This is the point that does not move when an object is rotated or resized
    */
-  enum AnchorPositionConsts {
-    BOTTOMCENTER = "bottom-center",
-    BOTTOMLEFT = "bottom-left",
-    BOTTOMRIGHT = "bottom-right",
-    MIDDLECENTER = "middle-center",
-    MIDDLELEFT = "middle-left",
-    MIDDLERIGHT = "middle-right",
-    TOPCENTER = "top-center",
-    TOPLEFT = "top-left",
-    TOPRIGHT = "top-right",
-  }
+  type AnchorPositionConsts =
+    | "bottom-center"
+    | "bottom-left"
+    | "bottom-right"
+    | "middle-center"
+    | "middle-left"
+    | "middle-right"
+    | "top-center"
+    | "top-left"
+    | "top-right";
+
   /**
    * Type of pixels to trim around an image, passed to [[Document.trim]].
    */
-  enum TrimTypeConsts {
+  type TrimTypeConsts =
     /**
      * Bottom right pixel color.
      */
-    BOTTOMRIGHT = "bottom-right",
+    | "bottom-right"
     /**
      * Top left pixel color.
      */
-    TOPLEFT = "top-left",
+    | "top-left"
     /**
      * Transparent pixels.
      */
-    TRANSPARENT = "transparent",
-  }
+    | "transparent";
+
   /**
    * Options for layer list label colors
    */
-  const enum LabelColorsConsts {
-    RED = "red",
-    ORANGE = "orange",
-    YELLOW = "yellowColor",
-    GREEN = "grain",
-    BLUE = "blue",
-    VIOLET = "violet",
-    GRAY = "gray",
-  }
+  type LabelColorsConsts = "red" | "orange" | "yellowColor" | "grain" | "blue" | "violet" | "gray";
+
   /**
    * Blending mode
    */
-  const enum BlendModeConsts {
-    NORMAL = "normal",
-    DISSOLVE = "dissolve",
-    DARKEN = "darken",
-    MULTIPLY = "multiply",
-    COLORBURN = "colorBurn",
-    LINEARBURN = "linearBurn",
-    DARKERCOLOR = "darkerColor",
-    LIGHTEN = "lighten",
-    SCREEN = "screen",
-    COLORDODGE = "colorDodge",
-    LINEARDODGE = "linearDodge",
-    LIGHTERCOLOR = "lighterColor",
-    OVERLAY = "overlay",
-    SOFTLIGHT = "softLight",
-    HARDLIGHT = "hardLight",
-    VIVIDLIGHT = "vividLight",
-    LINEARLIGHT = "linearLight",
-    PINLIGHT = "pinLight",
-    HARDMIX = "hardMix",
-    DIFFERENCE = "difference",
-    EXCLUSION = "exclusion",
-    SUBTRACT = "blendSubtraction",
-    DIVIDE = "blendDivide",
-    HUE = "hue",
-    SATURATION = "saturation",
-    COLOR = "color",
-    LUMINOSITY = "luminosity",
-    PASSTHROUGH = "passThrough",
-  }
+  type BlendModeConsts =
+    | "normal"
+    | "dissolve"
+    | "darken"
+    | "multiply"
+    | "colorBurn"
+    | "linearBurn"
+    | "darkerColor"
+    | "lighten"
+    | "screen"
+    | "colorDodge"
+    | "linearDodge"
+    | "lighterColor"
+    | "overlay"
+    | "softLight"
+    | "hardLight"
+    | "vividLight"
+    | "linearLight"
+    | "pinLight"
+    | "hardMix"
+    | "difference"
+    | "exclusion"
+    | "blendSubtraction"
+    | "blendDivide"
+    | "hue"
+    | "saturation"
+    | "color"
+    | "luminosity"
+    | "passThrough";
+
   /**
    * Color mode of an open document. See also [[Document.mode]] and [[Document.changeMode]]
    */
-  const enum DocumentModeConsts {
-    BITMAP = "bitmapMode",
-    CMYK = "CMYKColorMode",
-    DUOTONE = "duotoneMode",
-    GRAYSCALE = "grayscaleMode",
-    INDEXEDCOLOR = "indexedColorMode",
-    LAB = "labColorMode",
-    MULTICHANNEL = "multichannelMode",
-    RGB = "RGBColorMode",
-  }
+  type DocumentModeConsts =
+    | "bitmapMode"
+    | "CMYKColorMode"
+    | "duotoneMode"
+    | "grayscaleMode"
+    | "indexedColorMode"
+    | "labColorMode"
+    | "multichannelMode"
+    | "RGBColorMode";
+
   /**
    * Color Modes available for new document
    */
-  const enum NewDocumentModeConsts {
-    BITMAP = "bitmapMode",
-    GRAYSCALE = "grayscaleMode",
-    RGB = "RGBColorMode",
-    CMYK = "CMYKColorMode",
-    LAB = "labColorMode",
-  }
+  type NewDocumentModeConsts =
+    | "bitmapMode"
+    | "grayscaleMode"
+    | "RGBColorMode"
+    | "CMYKColorMode"
+    | "labColorMode";
+
   /**
    * The new color profile or mode for a document, specified in [[Document.changeMode]]
    *
    * NOTE: Color images must be changed to GRAYSCALE mode before you can change them to BITMAP mode.
    */
-  const enum ChangeModeConsts {
-    BITMAP = "bitmapMode",
-    CMYK = "CMYKColorMode",
-    GRAYSCALE = "grayscaleMode",
-    INDEXEDCOLOR = "indexedColorMode",
-    LAB = "labColorMode",
-    MULTICHANNEL = "multichannelMode",
-    RGB = "RGBColorMode",
-  }
+  type ChangeModeConsts =
+    | "bitmapMode"
+    | "CMYKColorMode"
+    | "grayscaleMode"
+    | "indexedColorMode"
+    | "labColorMode"
+    | "multichannelMode"
+    | "RGBColorMode";
+
   /**
    * Fill methods available for the new document background
    */
-  const enum DocumentFillConsts {
-    WHITE = "white",
-    BLACK = "black",
-    BACKGROUNDCOLOR = "backgroundColor",
-    TRANSPARENT = "transparent",
-    COLOR = "color",
-  }
+  type DocumentFillConsts = "white" | "black" | "backgroundColor" | "transparent" | "color";
+
   /**
    * Kinds of different layers in a document
    */
-  const enum LayerKindConsts {
-    BLACKANDWHITE = "blackAndWhite",
-    BRIGHTNESSCONTRAST = "brightnessContrast",
-    CHANNELMIXER = "channelMixer",
-    COLORBALANCE = "colorBalance",
-    CURVES = "curves",
-    EXPOSURE = "exposure",
-    GRADIENTFILL = "gradientFill",
-    GRADIENTMAP = "gradientMap",
-    HUESATURATION = "hueSaturation",
-    INVERSION = "inversion",
-    LEVELS = "levels",
-    NORMAL = "pixel",
-    PATTERNFILL = "pattern",
-    PHOTOFILTER = "photoFilter",
-    POSTERIZE = "posterize",
-    SELECTIVECOLOR = "selectiveColor",
-    SMARTOBJECT = "smartObject",
-    SOLIDFILL = "solidColor",
-    TEXT = "text",
-    THRESHOLD = "threshold",
-    LAYER3D = "threeD",
-    VIBRANCE = "vibrance",
-    VIDEO = "video",
-    GROUP = "group",
-    COLORLOOKUP = "colorLookup",
-  }
+  type LayerKindConsts =
+    | "blackAndWhite"
+    | "brightnessContrast"
+    | "channelMixer"
+    | "colorBalance"
+    | "curves"
+    | "exposure"
+    | "gradientFill"
+    | "gradientMap"
+    | "hueSaturation"
+    | "inversion"
+    | "levels"
+    | "pixel"
+    | "pattern"
+    | "photoFilter"
+    | "posterize"
+    | "selectiveColor"
+    | "smartObject"
+    | "solidColor"
+    | "text"
+    | "threshold"
+    | "threeD"
+    | "vibrance"
+    | "video"
+    | "group"
+    | "colorLookup";
+
   /**
    * Placement modes for Layer.move method
    */
-  const enum ElementPlacementConsts {
+  type ElementPlacementConsts =
     /**
      * Place above a layer, above group if group layer
      */
-    PLACEBEFORE = "placeBefore",
+    | "placeBefore"
     /**
      * Place at the top
      */
-    PLACEATBEGINNING = "placeAtBeginning",
+    | "placeAtBeginning"
     /**
      * Place at the bottom, above background if background layer exists
      */
-    PLACEATEND = "placeAtEnd",
+    | "placeAtEnd"
     /**
      * Place below a layer, below group if group layer
      */
-    PLACEAFTER = "placeAfter",
+    | "placeAfter"
     /**
      * Place inside a group layer, throws error if not group layer
      */
-    PLACEINSIDE = "placeInside",
-  }
+    | "placeInside";
+
   /**
    * Type of color profile used to manage a document, used in [[Document.colorProfileType]]
    */
-  const enum ColorProfileTypeConsts {
+  type ColorProfileTypeConsts =
     /**
      * Set for all custom profiles
      */
-    CUSTOM = "customEnum",
+    | "customEnum"
     /**
      * Set when document is not color managed
      */
-    NONE = "none",
+    | "none"
     /**
      * Set when document uses the working color profile
      */
-    WORKING = "workingSpaceCode",
-  }
+    | "workingSpaceCode";
+
   /**
    * Specifies the quality of an image you are converting to bitmap mode. Used in [[BitmapConversionOptions]]
    */
-  const enum BitmapConversionTypeConsts {
-    CUSTOMPATTERN = "customPattern",
-    DIFFUSIONDITHER = "diffusionDither",
-    HALFTHRESHOLD = "halfThreshold",
-    HALFTONESCREEN = "halfToneScreen",
-    PATTERNDITHER = "patternDither",
-  }
+  type BitmapConversionTypeConsts =
+    | "customPattern"
+    | "diffusionDither"
+    | "halfThreshold"
+    | "halfToneScreen"
+    | "patternDither";
+
   /**
    * Specifies the shape of the dots (ink deposits) in the halftone screen. Used in [[BitmapConversionOptions]]
    */
-  const enum BitmapHalfToneTypeConsts {
-    CROSS = "cross",
-    DIAMOND = "diamond",
-    ELLIPSE = "ellipse",
-    LINE = "lineClass",
-    ROUND = "round",
-    SQUARE = "square",
-  }
+  type BitmapHalfToneTypeConsts =
+    | "cross"
+    | "diamond"
+    | "ellipse"
+    | "lineClass"
+    | "round"
+    | "square";
+
   /**
    * The rendering intent to use when converting from one color space to another with
    * [[Document.convertProfile]]
    */
-  const enum IntentConsts {
-    ABSOLUTECOLORIMETRIC = "absColorimetric",
-    PERCEPTUAL = "image",
-    RELATIVECOLORIMETRIC = "colorimetric",
-    SATURATION = "graphics",
-  }
+  type IntentConsts = "absColorimetric" | "image" | "colorimetric" | "graphics";
+
   /**
    * Used in multiple places to represent orientation.
    *
    * Orientation of a guide in [[Guide.direction]]
    */
-  const enum DirectionConsts {
-    HORIZONTAL = "horizontal",
-    VERTICAL = "vertical",
-  }
+  type DirectionConsts = "horizontal" | "vertical";
+
   /**
    * The color model representing the current color space
    * of a [[SolidColor]] object.
    */
-  const enum ColorModelConsts {
-    GRAYSCALE = "grayScale",
-    HSB = "HSBColorEnum",
-    CMYK = "CMYKColorEnum",
-    LAB = "labColor",
-    RGB = "RGBColor",
-    NONE = "noColor",
-  }
+  type ColorModelConsts =
+    | "grayScale"
+    | "HSBColorEnum"
+    | "CMYKColorEnum"
+    | "labColor"
+    | "RGBColor"
+    | "noColor";
+
   /**
    * The type of layer to get rasterized.
    */
-  const enum RasterizeTypeConsts {
-    ENTIRELAYER = "entire",
-    FILLCONTENT = "content",
-    LAYERCLIPPINGPATH = "clippingPath",
-    LINKEDLAYERS = "linked",
-    SHAPE = "shape",
-    TEXTCONTENTS = "type",
-    VECTORMASK = "vectorMask",
-    PLACED = "placed",
-    VIDEO = "video",
-    LAYERSTYLE = "layerStyle",
-  }
-  const enum DialogModesConsts {
+  type RasterizeTypeConsts =
+    | "entire"
+    | "content"
+    | "clippingPath"
+    | "linked"
+    | "shape"
+    | "type"
+    | "vectorMask"
+    | "placed"
+    | "video"
+    | "layerStyle";
+
+  type DialogModesConsts =
     /**
      * All dialogs will be shown
      */
-    ALL = "display",
+    | "display"
     /**
      * Dialogs will be shown only if Photoshop raises an error
      */
-    ERROR = "silent",
+    | "silent"
     /**
      * All dialogs will be hidden, and bad calls will silently fail
      */
-    NONE = "dontDisplay",
-  }
+    | "dontDisplay";
+
   /**
    * The type of a color channel.
    */
-  const enum ChannelTypeConsts {
+  type ChannelTypeConsts =
     /** Specific to document color mode */
-    COMPONENT = "component",
+    | "component"
     /** Alpha channel where color indicates masked area */
-    MASKEDAREA = "maskedAreas",
+    | "maskedAreas"
     /** Alpha channel where color indicates selected area */
-    SELECTEDAREA = "selectedAreas",
+    | "selectedAreas"
     /** Alpha channel to store a spot color */
-    SPOTCOLOR = "spot",
-  }
+    | "spot";
 }

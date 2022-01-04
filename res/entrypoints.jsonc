@@ -358,6 +358,42 @@
       }
     },
     {
+      "path": ["photoshop", "Channels"],
+      "config": {
+        "extendsInterfaces": ["Array<Channel>"]
+      }
+    },
+    {
+      "path": ["photoshop", "Documents"],
+      "config": {
+        "extendsInterfaces": ["Array<Document>"]
+      }
+    },
+    {
+      "path": ["photoshop", "Guides"],
+      "config": {
+        "extendsInterfaces": ["Array<Guide>"]
+      }
+    },
+    {
+      "path": ["photoshop", "HistoryStates"],
+      "config": {
+        "extendsInterfaces": ["Array<HistoryState>"]
+      }
+    },
+    {
+      "path": ["photoshop", "Layers"],
+      "config": {
+        "extendsInterfaces": ["Array<Layer>"]
+      }
+    },
+    {
+      "path": ["photoshop", "TextFonts"],
+      "config": {
+        "extendsInterfaces": ["Array<TextFont>"]
+      }
+    },
+    {
       "path": ["photoshop", "BatchPlayCommandOptions", "historyStateInfo"],
       "config": {
         "returnType": {

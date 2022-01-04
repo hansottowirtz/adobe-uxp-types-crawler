@@ -20,4 +20,10 @@ async () => {
   const newDocument = await app.open(singleFile);
   expectType<Document>(newDocument);
   expectType<void>(await app.activeDocument.saveAs.jpg(singleFile));
+
+  expectType<Layer>(await app.activeDocument.createLayer({ color: "gray" }));
+
+  expectType<void>(app.activeDocument.layers.forEach(() => {}));
+  expectType<void>(app.activeDocument.channels.forEach(() => {}));
+  expectType<void>(app.documents.forEach(() => {}));
 };

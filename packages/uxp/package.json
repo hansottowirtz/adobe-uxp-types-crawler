@@ -1,8 +1,12 @@
 {
-  "name": "adobe-uxp-types-uxp",
-  "version": "0.0.7-beta.1",
+  "name": "@adobe-uxp-types/uxp",
+  "version": "0.0.7-beta.2",
   "types": "./uxp.d.ts",
   "files": [
     "uxp.d.ts"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }

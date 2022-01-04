@@ -55,31 +55,20 @@ declare module "photoshop" {
   /**
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
-   * From https://github.com/AdobeDocs/uxp-photoshop/blob/a0aa32139d/src/pages/ps_reference/media/advanced/batchplay.md
+   * From https://github.com/AdobeDocs/uxp-photoshop/blob/main/src/pages/ps_reference/media/batchplay.md
    */
   interface ActionDescriptor {
     /**
+     * The command. This describes the desired Photoshop command.
      * _obj is a reserved identifier for the event of the action descriptor.
      * _obj is universally needed for all descriptors being passed into batchPlay.
      */
     _obj: string;
     /**
-     * This is the ActionReference, the element on which this action should be played
+     * The target for the command. This describes the (DOM) element that the command should operate on.
+     * This property is sometimes omitted. If omitted, the command operates on a default element. The default element is typically the object that is active in the UI.
      */
-    _target: {
-      /**
-       * @example "document"
-       */
-      _ref: string;
-      /**
-       * @example "ordinal"
-       */
-      _enum: string;
-      /**
-       * @example "targetEnum"
-       */
-      _value: string;
-    };
+    _target?: any;
     [key: string]: any;
   }
 

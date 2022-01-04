@@ -2,28 +2,28 @@
 
 Currently includes types for Adobe Photoshop and UXP.
 
-This project crawls the Adobe UXP documentation and generates Typescript declaration files.
+This project crawls the Adobe UXP documentation and generates Typescript declaration files, merging them with manually created types.
 
 ## Usage
 
 ```bash
-npm i -D adobe-uxp-types-photoshop
-npm i -D adobe-uxp-types-uxp
+npm i -D @adobe-uxp-types/photoshop
+npm i -D @adobe-uxp-types/uxp
 ```
 
 ```jsonc
 // tsconfig.json
 {
   "compilerOptions": {
-    "typeRoots": ["node_modules/@types", "node_modules/adobe-uxp-types-photoshop", "node_modules/adobe-uxp-types-uxp"],
-    "types": ["adobe-uxp-types-photoshop", "adobe-uxp-types-uxp", /* other types */] // this field is optional
+    "typeRoots": ["node_modules/@types", "node_modules/@adobe-uxp-types"],
+    "types": ["photoshop", "uxp", /* other types */] // this field is optional
   }
 }
 ```
 
-**Best used together with**: [AdobeXD/typings](https://github.com/AdobeXD/typings/blob/master/types/uxp.d.ts)
-
 **Warning**: These typings are not thoroughly tested and will contain a lot of bugs! Please open an [issue](https://github.com/hansottowirtz/adobe-uxp-types-crawler/issues) if you find any inconsistencies.
+
+**The @adobe-uxp-types organization is not an official Adobe project**
 
 ## Intro
 

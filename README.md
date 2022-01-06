@@ -21,6 +21,8 @@ npm i -D @adobe-uxp-types/uxp
 }
 ```
 
+Looking for `GroupLayer` or `layerTree`? These were removed in newer versions of the UXP API. For Photoshop, make sure your `manifest.json` has [`host.data.apiVersion` set to `2`](https://www.adobe.io/photoshop/uxp/2022/guides/uxp_guide/uxp-misc/manifest-v4/photoshop-manifest)!
+
 **Warning**: These typings are not thoroughly tested and will contain a lot of bugs! Please open an [issue](https://github.com/hansottowirtz/adobe-uxp-types-crawler/issues) if you find any inconsistencies.
 
 **The @adobe-uxp-types organization is not an official Adobe project**

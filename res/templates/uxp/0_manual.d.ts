@@ -1,4 +1,4 @@
-// Manually created by @thejustinwalsh
+// Manually created by @thejustinwalsh and edited by @hansottowirtz
 // From https://github.com/thejustinwalsh/uxp-types
 declare module "uxp" {
   namespace dialog {
@@ -120,7 +120,7 @@ declare module "uxp" {
         options?: {
           overwrite?: boolean;
         }
-      ) => void;
+      ) => Promise<void>;
 
       moveTo: (
         folder: Folder,
@@ -128,9 +128,9 @@ declare module "uxp" {
           overwrite?: boolean;
           newName?: string;
         }
-      ) => void;
+      ) => Promise<void>;
 
-      delete: () => void;
+      delete: () => Promise<void>;
 
       getMetadata: () => Promise<EntryMetadata>;
 
@@ -155,7 +155,7 @@ declare module "uxp" {
       write: (
         data: string | ArrayBuffer,
         options?: { format?: FormatSymbol; append?: boolean }
-      ) => void;
+      ) => Promise<void>;
     }
 
     class Folder extends Entry {
@@ -163,7 +163,7 @@ declare module "uxp" {
 
       isFolder: boolean;
 
-      getEntries: () => Entry[];
+      getEntries: () => Promise<Entry[]>;
 
       createEntry: (
         name: string,
@@ -190,7 +190,7 @@ declare module "uxp" {
         options: {
           overwrite?: boolean;
         }
-      ) => void;
+      ) => Promise<void>;
     }
 
     class FileSystemProvider {

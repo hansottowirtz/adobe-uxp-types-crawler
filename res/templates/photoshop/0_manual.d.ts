@@ -29,12 +29,6 @@ declare module "photoshop" {
    * Incomplete definition.
    * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
    */
-  type LayerTypes = Layer;
-
-  /**
-   * Incomplete definition.
-   * Contibute at github.com/hansottowirtz/adobe-uxp-types-crawler
-   */
   type SaveDialogOptions = any;
 
   /**

@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This package has been archived, but some of the types are moved to https://github.com/bubblydoo/uxp-toolkit. The npm packages are updated from that repo.
+
 # Adobe UXP Types Crawler
 
 Currently includes types for Adobe Photoshop and UXP.
